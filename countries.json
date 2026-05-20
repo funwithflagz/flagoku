@@ -1,0 +1,4643 @@
+[
+  {
+    "id": "france",
+    "name": "France",
+    "flag": "🇫🇷",
+    "continent": "Europe",
+    "language": [
+      "Français"
+    ],
+    "capital": "Paris",
+    "population": "grande",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 1
+  },
+  {
+    "id": "espagne",
+    "name": "Espagne",
+    "flag": "🇪🇸",
+    "continent": "Europe",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Madrid",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "allemagne",
+    "name": "Allemagne",
+    "flag": "🇩🇪",
+    "continent": "Europe",
+    "language": [
+      "Allemand"
+    ],
+    "capital": "Berlin",
+    "population": "grande",
+    "flag_colors": [
+      "noir",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 1
+  },
+  {
+    "id": "italie",
+    "name": "Italie",
+    "flag": "🇮🇹",
+    "continent": "Europe",
+    "language": [
+      "Italien"
+    ],
+    "capital": "Rome",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 1
+  },
+  {
+    "id": "portugal",
+    "name": "Portugal",
+    "flag": "🇵🇹",
+    "continent": "Europe",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "Lisbonne",
+    "population": "moyenne",
+    "flag_colors": [
+      "vert",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "belgique",
+    "name": "Belgique",
+    "flag": "🇧🇪",
+    "continent": "Europe",
+    "language": [
+      "Français",
+      "Néerlandais",
+      "Allemand"
+    ],
+    "capital": "Bruxelles",
+    "population": "moyenne",
+    "flag_colors": [
+      "noir",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 1
+  },
+  {
+    "id": "pays-bas",
+    "name": "Pays-Bas",
+    "flag": "🇳🇱",
+    "continent": "Europe",
+    "language": [
+      "Néerlandais"
+    ],
+    "capital": "Amsterdam",
+    "population": "moyenne",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "suisse",
+    "name": "Suisse",
+    "flag": "🇨🇭",
+    "continent": "Europe",
+    "language": [
+      "Français",
+      "Allemand",
+      "Italien",
+      "Romanche"
+    ],
+    "capital": "Berne",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "carre"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "autriche",
+    "name": "Autriche",
+    "flag": "🇦🇹",
+    "continent": "Europe",
+    "language": [
+      "Allemand"
+    ],
+    "capital": "Vienne",
+    "population": "moyenne",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "pologne",
+    "name": "Pologne",
+    "flag": "🇵🇱",
+    "continent": "Europe",
+    "language": [
+      "Polonais"
+    ],
+    "capital": "Varsovie",
+    "population": "grande",
+    "flag_colors": [
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "suede",
+    "name": "Suède",
+    "flag": "🇸🇪",
+    "continent": "Europe",
+    "language": [
+      "Suédois"
+    ],
+    "capital": "Stockholm",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "croix_nordique"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "norvege",
+    "name": "Norvège",
+    "flag": "🇳🇴",
+    "continent": "Europe",
+    "language": [
+      "Norvégien"
+    ],
+    "capital": "Oslo",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "croix_nordique"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "danemark",
+    "name": "Danemark",
+    "flag": "🇩🇰",
+    "continent": "Europe",
+    "language": [
+      "Danois"
+    ],
+    "capital": "Copenhague",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "croix_nordique"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "finlande",
+    "name": "Finlande",
+    "flag": "🇫🇮",
+    "continent": "Europe",
+    "language": [
+      "Finnois",
+      "Suédois"
+    ],
+    "capital": "Helsinki",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "croix_nordique"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "irlande",
+    "name": "Irlande",
+    "flag": "🇮🇪",
+    "continent": "Europe",
+    "language": [
+      "Anglais",
+      "Irlandais"
+    ],
+    "capital": "Dublin",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "orange"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "royaume-uni",
+    "name": "Royaume-Uni",
+    "flag": "🇬🇧",
+    "continent": "Europe",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Londres",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "union_jack"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "grece",
+    "name": "Grèce",
+    "flag": "🇬🇷",
+    "continent": "Europe",
+    "language": [
+      "Grec"
+    ],
+    "capital": "Athènes",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "hongrie",
+    "name": "Hongrie",
+    "flag": "🇭🇺",
+    "continent": "Europe",
+    "language": [
+      "Hongrois"
+    ],
+    "capital": "Budapest",
+    "population": "moyenne",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "roumanie",
+    "name": "Roumanie",
+    "flag": "🇷🇴",
+    "continent": "Europe",
+    "language": [
+      "Roumain"
+    ],
+    "capital": "Bucarest",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "bulgarie",
+    "name": "Bulgarie",
+    "flag": "🇧🇬",
+    "continent": "Europe",
+    "language": [
+      "Bulgare"
+    ],
+    "capital": "Sofia",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "vert",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "serbie",
+    "name": "Serbie",
+    "flag": "🇷🇸",
+    "continent": "Europe",
+    "language": [
+      "Serbe"
+    ],
+    "capital": "Belgrade",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "croatie",
+    "name": "Croatie",
+    "flag": "🇭🇷",
+    "continent": "Europe",
+    "language": [
+      "Croate"
+    ],
+    "capital": "Zagreb",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "damier"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "albanie",
+    "name": "Albanie",
+    "flag": "🇦🇱",
+    "continent": "Europe",
+    "language": [
+      "Albanais"
+    ],
+    "capital": "Tirana",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "noir"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "aigle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "macedoine",
+    "name": "Macédoine du Nord",
+    "flag": "🇲🇰",
+    "continent": "Europe",
+    "language": [
+      "Macédonien"
+    ],
+    "capital": "Skopje",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "slovaquie",
+    "name": "Slovaquie",
+    "flag": "🇸🇰",
+    "continent": "Europe",
+    "language": [
+      "Slovaque"
+    ],
+    "capital": "Bratislava",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "croix"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "slovenie",
+    "name": "Slovénie",
+    "flag": "🇸🇮",
+    "continent": "Europe",
+    "language": [
+      "Slovène"
+    ],
+    "capital": "Ljubljana",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "republique-tcheque",
+    "name": "République tchèque",
+    "flag": "🇨🇿",
+    "continent": "Europe",
+    "language": [
+      "Tchèque"
+    ],
+    "capital": "Prague",
+    "population": "moyenne",
+    "flag_colors": [
+      "blanc",
+      "rouge",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "ukraine",
+    "name": "Ukraine",
+    "flag": "🇺🇦",
+    "continent": "Europe",
+    "language": [
+      "Ukrainien"
+    ],
+    "capital": "Kiev",
+    "population": "grande",
+    "flag_colors": [
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "russie",
+    "name": "Russie",
+    "flag": "🇷🇺",
+    "continent": "Europe",
+    "language": [
+      "Russe"
+    ],
+    "capital": "Moscou",
+    "population": "tres_grande",
+    "flag_colors": [
+      "blanc",
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 1
+  },
+  {
+    "id": "bielorussie",
+    "name": "Biélorussie",
+    "flag": "🇧🇾",
+    "continent": "Europe",
+    "language": [
+      "Biélorusse",
+      "Russe"
+    ],
+    "capital": "Minsk",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "motif"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "estonie",
+    "name": "Estonie",
+    "flag": "🇪🇪",
+    "continent": "Europe",
+    "language": [
+      "Estonien"
+    ],
+    "capital": "Tallinn",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "noir",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "lettonie",
+    "name": "Lettonie",
+    "flag": "🇱🇻",
+    "continent": "Europe",
+    "language": [
+      "Letton"
+    ],
+    "capital": "Riga",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "lituanie",
+    "name": "Lituanie",
+    "flag": "🇱🇹",
+    "continent": "Europe",
+    "language": [
+      "Lituanien"
+    ],
+    "capital": "Vilnius",
+    "population": "petite",
+    "flag_colors": [
+      "jaune",
+      "vert",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "luxembourg",
+    "name": "Luxembourg",
+    "flag": "🇱🇺",
+    "continent": "Europe",
+    "language": [
+      "Français",
+      "Allemand",
+      "Luxembourgeois"
+    ],
+    "capital": "Luxembourg",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "islande",
+    "name": "Islande",
+    "flag": "🇮🇸",
+    "continent": "Europe",
+    "language": [
+      "Islandais"
+    ],
+    "capital": "Reykjavik",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "croix_nordique"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "malte",
+    "name": "Malte",
+    "flag": "🇲🇹",
+    "continent": "Europe",
+    "language": [
+      "Maltais",
+      "Anglais"
+    ],
+    "capital": "La Valette",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "chypre",
+    "name": "Chypre",
+    "flag": "🇨🇾",
+    "continent": "Europe",
+    "language": [
+      "Grec",
+      "Turc"
+    ],
+    "capital": "Nicosie",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "orange",
+      "vert"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "carte",
+      "feuille"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "bosnie",
+    "name": "Bosnie-Herzégovine",
+    "flag": "🇧🇦",
+    "continent": "Europe",
+    "language": [
+      "Bosnien",
+      "Croate",
+      "Serbe"
+    ],
+    "capital": "Sarajevo",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "montenegro",
+    "name": "Monténégro",
+    "flag": "🇲🇪",
+    "continent": "Europe",
+    "language": [
+      "Monténégrin"
+    ],
+    "capital": "Podgorica",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "or",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "aigle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "kosovo",
+    "name": "Kosovo",
+    "flag": "🇽🇰",
+    "continent": "Europe",
+    "language": [
+      "Albanais",
+      "Serbe"
+    ],
+    "capital": "Pristina",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "or",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "carte",
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "moldavie",
+    "name": "Moldavie",
+    "flag": "🇲🇩",
+    "continent": "Europe",
+    "language": [
+      "Roumain"
+    ],
+    "capital": "Chișinău",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "aigle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "georgie",
+    "name": "Géorgie",
+    "flag": "🇬🇪",
+    "continent": "Europe",
+    "language": [
+      "Géorgien"
+    ],
+    "capital": "Tbilissi",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "armenie",
+    "name": "Arménie",
+    "flag": "🇦🇲",
+    "continent": "Asie",
+    "language": [
+      "Arménien"
+    ],
+    "capital": "Erevan",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "orange"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "azerbaidjan",
+    "name": "Azerbaïdjan",
+    "flag": "🇦🇿",
+    "continent": "Asie",
+    "language": [
+      "Azerbaïdjanais"
+    ],
+    "capital": "Bakou",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "croissant",
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "andorre",
+    "name": "Andorre",
+    "flag": "🇦🇩",
+    "continent": "Europe",
+    "language": [
+      "Catalan"
+    ],
+    "capital": "Andorre-la-Vieille",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "monaco",
+    "name": "Monaco",
+    "flag": "🇲🇨",
+    "continent": "Europe",
+    "language": [
+      "Français"
+    ],
+    "capital": "Monaco",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "liechtenstein",
+    "name": "Liechtenstein",
+    "flag": "🇱🇮",
+    "continent": "Europe",
+    "language": [
+      "Allemand"
+    ],
+    "capital": "Vaduz",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "couronne"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "san-marin",
+    "name": "Saint-Marin",
+    "flag": "🇸🇲",
+    "continent": "Europe",
+    "language": [
+      "Italien"
+    ],
+    "capital": "Saint-Marin",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "bresil",
+    "name": "Brésil",
+    "flag": "🇧🇷",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "Brasilia",
+    "population": "tres_grande",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "losange",
+      "cercle"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "argentine",
+    "name": "Argentine",
+    "flag": "🇦🇷",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Buenos Aires",
+    "population": "grande",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "colombie",
+    "name": "Colombie",
+    "flag": "🇨🇴",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Bogotá",
+    "population": "grande",
+    "flag_colors": [
+      "jaune",
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "chili",
+    "name": "Chili",
+    "flag": "🇨🇱",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Santiago",
+    "population": "moyenne",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "perou",
+    "name": "Pérou",
+    "flag": "🇵🇪",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Lima",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "venezuela",
+    "name": "Venezuela",
+    "flag": "🇻🇪",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Caracas",
+    "population": "grande",
+    "flag_colors": [
+      "jaune",
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "equateur",
+    "name": "Équateur",
+    "flag": "🇪🇨",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Quito",
+    "population": "moyenne",
+    "flag_colors": [
+      "jaune",
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "bolivie",
+    "name": "Bolivie",
+    "flag": "🇧🇴",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Sucre",
+    "population": "moyenne",
+    "flag_colors": [
+      "rouge",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "uruguay",
+    "name": "Uruguay",
+    "flag": "🇺🇾",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Montevideo",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "paraguay",
+    "name": "Paraguay",
+    "flag": "🇵🇾",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Espagnol",
+      "Guarani"
+    ],
+    "capital": "Asunción",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "suriname",
+    "name": "Suriname",
+    "flag": "🇸🇷",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Néerlandais"
+    ],
+    "capital": "Paramaribo",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "guyana",
+    "name": "Guyana",
+    "flag": "🇬🇾",
+    "continent": "Amérique du Sud",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Georgetown",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "jaune",
+      "rouge",
+      "noir"
+    ],
+    "flag_shapes": [
+      "triangle"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "mexique",
+    "name": "Mexique",
+    "flag": "🇲🇽",
+    "continent": "Amérique du Nord",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Mexico",
+    "population": "tres_grande",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "aigle"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "etats-unis",
+    "name": "États-Unis",
+    "flag": "🇺🇸",
+    "continent": "Amérique du Nord",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Washington",
+    "population": "tres_grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "continent": "Amérique du Nord",
+    "language": [
+      "Anglais",
+      "Français"
+    ],
+    "capital": "Ottawa",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "feuille"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "cuba",
+    "name": "Cuba",
+    "flag": "🇨🇺",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "La Havane",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "republique-dominicaine",
+    "name": "République dominicaine",
+    "flag": "🇩🇴",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Saint-Domingue",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "croix"
+    ],
+    "flag_symbols": [
+      "croix",
+      "armoiries"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "guatemala",
+    "name": "Guatemala",
+    "flag": "🇬🇹",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Guatemala City",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "honduras",
+    "name": "Honduras",
+    "flag": "🇭🇳",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Tegucigalpa",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "nicaragua",
+    "name": "Nicaragua",
+    "flag": "🇳🇮",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Managua",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "triangle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "costa-rica",
+    "name": "Costa Rica",
+    "flag": "🇨🇷",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "San José",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "panama",
+    "name": "Panama",
+    "flag": "🇵🇦",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "Panama City",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "quartiers"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "el-salvador",
+    "name": "El Salvador",
+    "flag": "🇸🇻",
+    "continent": "Amérique centrale",
+    "language": [
+      "Espagnol"
+    ],
+    "capital": "San Salvador",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "haiti",
+    "name": "Haïti",
+    "flag": "🇭🇹",
+    "continent": "Amérique centrale",
+    "language": [
+      "Français",
+      "Haïtien"
+    ],
+    "capital": "Port-au-Prince",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "jamaique",
+    "name": "Jamaïque",
+    "flag": "🇯🇲",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Kingston",
+    "population": "petite",
+    "flag_colors": [
+      "noir",
+      "vert",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "croix_diagonale"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "trinite",
+    "name": "Trinité-et-Tobago",
+    "flag": "🇹🇹",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Port-d'Espagne",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "noir",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "belize",
+    "name": "Belize",
+    "flag": "🇧🇿",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Belmopan",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "barbade",
+    "name": "Barbade",
+    "flag": "🇧🇧",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Bridgetown",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "trident"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "bahamas",
+    "name": "Bahamas",
+    "flag": "🇧🇸",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Nassau",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "or",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "chine",
+    "name": "Chine",
+    "flag": "🇨🇳",
+    "continent": "Asie",
+    "language": [
+      "Mandarin"
+    ],
+    "capital": "Pékin",
+    "population": "tres_grande",
+    "flag_colors": [
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "japon",
+    "name": "Japon",
+    "flag": "🇯🇵",
+    "continent": "Asie",
+    "language": [
+      "Japonais"
+    ],
+    "capital": "Tokyo",
+    "population": "tres_grande",
+    "flag_colors": [
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "cercle"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "inde",
+    "name": "Inde",
+    "flag": "🇮🇳",
+    "continent": "Asie",
+    "language": [
+      "Hindi",
+      "Anglais"
+    ],
+    "capital": "New Delhi",
+    "population": "tres_grande",
+    "flag_colors": [
+      "orange",
+      "blanc",
+      "vert",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "roue"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "coree-du-sud",
+    "name": "Corée du Sud",
+    "flag": "🇰🇷",
+    "continent": "Asie",
+    "language": [
+      "Coréen"
+    ],
+    "capital": "Séoul",
+    "population": "grande",
+    "flag_colors": [
+      "blanc",
+      "rouge",
+      "bleu",
+      "noir"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "cercle",
+      "triggrammes"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "coree-du-nord",
+    "name": "Corée du Nord",
+    "flag": "🇰🇵",
+    "continent": "Asie",
+    "language": [
+      "Coréen"
+    ],
+    "capital": "Pyongyang",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "indonesie",
+    "name": "Indonésie",
+    "flag": "🇮🇩",
+    "continent": "Asie",
+    "language": [
+      "Indonésien"
+    ],
+    "capital": "Jakarta",
+    "population": "tres_grande",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "pakistan",
+    "name": "Pakistan",
+    "flag": "🇵🇰",
+    "continent": "Asie",
+    "language": [
+      "Ourdou",
+      "Anglais"
+    ],
+    "capital": "Islamabad",
+    "population": "tres_grande",
+    "flag_colors": [
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "croissant"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "bangladesh",
+    "name": "Bangladesh",
+    "flag": "🇧🇩",
+    "continent": "Asie",
+    "language": [
+      "Bengali"
+    ],
+    "capital": "Dacca",
+    "population": "tres_grande",
+    "flag_colors": [
+      "vert",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "cercle"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "flag": "🇻🇳",
+    "continent": "Asie",
+    "language": [
+      "Vietnamien"
+    ],
+    "capital": "Hanoï",
+    "population": "tres_grande",
+    "flag_colors": [
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "thailande",
+    "name": "Thaïlande",
+    "flag": "🇹🇭",
+    "continent": "Asie",
+    "language": [
+      "Thaï"
+    ],
+    "capital": "Bangkok",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "malaisie",
+    "name": "Malaisie",
+    "flag": "🇲🇾",
+    "continent": "Asie",
+    "language": [
+      "Malais"
+    ],
+    "capital": "Kuala Lumpur",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "croissant"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "philippines",
+    "name": "Philippines",
+    "flag": "🇵🇭",
+    "continent": "Asie",
+    "language": [
+      "Filipino",
+      "Anglais"
+    ],
+    "capital": "Manille",
+    "population": "tres_grande",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "blanc",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoiles",
+      "soleil"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "singapour",
+    "name": "Singapour",
+    "flag": "🇸🇬",
+    "continent": "Asie",
+    "language": [
+      "Anglais",
+      "Mandarin",
+      "Malais",
+      "Tamoul"
+    ],
+    "capital": "Singapour",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoiles",
+      "croissant"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "turquie",
+    "name": "Turquie",
+    "flag": "🇹🇷",
+    "continent": "Asie",
+    "language": [
+      "Turc"
+    ],
+    "capital": "Ankara",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "croissant"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "iran",
+    "name": "Iran",
+    "flag": "🇮🇷",
+    "continent": "Asie",
+    "language": [
+      "Persan"
+    ],
+    "capital": "Téhéran",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "texte"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "irak",
+    "name": "Irak",
+    "flag": "🇮🇶",
+    "continent": "Asie",
+    "language": [
+      "Arabe",
+      "Kurde"
+    ],
+    "capital": "Bagdad",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "noir",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "texte"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "arabie-saoudite",
+    "name": "Arabie Saoudite",
+    "flag": "🇸🇦",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Riyad",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "texte",
+      "sabre"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "israel",
+    "name": "Israël",
+    "flag": "🇮🇱",
+    "continent": "Asie",
+    "language": [
+      "Hébreu",
+      "Arabe"
+    ],
+    "capital": "Jérusalem",
+    "population": "petite",
+    "flag_colors": [
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile_david"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "jordanie",
+    "name": "Jordanie",
+    "flag": "🇯🇴",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Amman",
+    "population": "petite",
+    "flag_colors": [
+      "noir",
+      "blanc",
+      "vert",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "liban",
+    "name": "Liban",
+    "flag": "🇱🇧",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Beyrouth",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "arbre"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "syrie",
+    "name": "Syrie",
+    "flag": "🇸🇾",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Damas",
+    "population": "moyenne",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "noir",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "afghanistan",
+    "name": "Afghanistan",
+    "flag": "🇦🇫",
+    "continent": "Asie",
+    "language": [
+      "Dari",
+      "Pachto"
+    ],
+    "capital": "Kaboul",
+    "population": "grande",
+    "flag_colors": [
+      "noir",
+      "rouge",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "mosque",
+      "texte"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "mongolie",
+    "name": "Mongolie",
+    "flag": "🇲🇳",
+    "continent": "Asie",
+    "language": [
+      "Mongol"
+    ],
+    "capital": "Oulan-Bator",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "soyombo"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "kazakhstan",
+    "name": "Kazakhstan",
+    "flag": "🇰🇿",
+    "continent": "Asie",
+    "language": [
+      "Kazakh",
+      "Russe"
+    ],
+    "capital": "Astana",
+    "population": "moyenne",
+    "flag_colors": [
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "soleil",
+      "aigle",
+      "motif"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "ouzbekistan",
+    "name": "Ouzbékistan",
+    "flag": "🇺🇿",
+    "continent": "Asie",
+    "language": [
+      "Ouzbek"
+    ],
+    "capital": "Tachkent",
+    "population": "grande",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "vert",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "croissant",
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "turkmenistan",
+    "name": "Turkménistan",
+    "flag": "🇹🇲",
+    "continent": "Asie",
+    "language": [
+      "Turkmène"
+    ],
+    "capital": "Achgabat",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "croissant",
+      "etoiles",
+      "motif"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "kirghizstan",
+    "name": "Kirghizistan",
+    "flag": "🇰🇬",
+    "continent": "Asie",
+    "language": [
+      "Kirghiz",
+      "Russe"
+    ],
+    "capital": "Bichkek",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "soleil",
+      "motif"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "tadjikistan",
+    "name": "Tadjikistan",
+    "flag": "🇹🇯",
+    "continent": "Asie",
+    "language": [
+      "Tadjik"
+    ],
+    "capital": "Douchanbé",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "couronne",
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "nepal",
+    "name": "Népal",
+    "flag": "🇳🇵",
+    "continent": "Asie",
+    "language": [
+      "Népalais"
+    ],
+    "capital": "Katmandou",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "double_triangle"
+    ],
+    "flag_symbols": [
+      "lune",
+      "soleil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "sri-lanka",
+    "name": "Sri Lanka",
+    "flag": "🇱🇰",
+    "continent": "Asie",
+    "language": [
+      "Cingalais",
+      "Tamoul"
+    ],
+    "capital": "Colombo",
+    "population": "moyenne",
+    "flag_colors": [
+      "bordeaux",
+      "or",
+      "vert",
+      "orange"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "lion",
+      "feuille"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "myanmar",
+    "name": "Myanmar",
+    "flag": "🇲🇲",
+    "continent": "Asie",
+    "language": [
+      "Birman"
+    ],
+    "capital": "Naypyidaw",
+    "population": "grande",
+    "flag_colors": [
+      "jaune",
+      "vert",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "cambodge",
+    "name": "Cambodge",
+    "flag": "🇰🇭",
+    "continent": "Asie",
+    "language": [
+      "Khmer"
+    ],
+    "capital": "Phnom Penh",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "temple"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "laos",
+    "name": "Laos",
+    "flag": "🇱🇦",
+    "continent": "Asie",
+    "language": [
+      "Laotien"
+    ],
+    "capital": "Vientiane",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "cercle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "taiwan",
+    "name": "Taïwan",
+    "flag": "🇹🇼",
+    "continent": "Asie",
+    "language": [
+      "Mandarin"
+    ],
+    "capital": "Taipei",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "oman",
+    "name": "Oman",
+    "flag": "🇴🇲",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Mascate",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "emirats",
+    "name": "Émirats arabes unis",
+    "flag": "🇦🇪",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Abou Dabi",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "blanc",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "qatar",
+    "name": "Qatar",
+    "flag": "🇶🇦",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Doha",
+    "population": "petite",
+    "flag_colors": [
+      "bordeaux",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "koweit",
+    "name": "Koweït",
+    "flag": "🇰🇼",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Koweït City",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "bahrein",
+    "name": "Bahreïn",
+    "flag": "🇧🇭",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Manama",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "yemen",
+    "name": "Yémen",
+    "flag": "🇾🇪",
+    "continent": "Asie",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Sanaa",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "brunei",
+    "name": "Brunéi",
+    "flag": "🇧🇳",
+    "continent": "Asie",
+    "language": [
+      "Malais"
+    ],
+    "capital": "Bandar Seri Begawan",
+    "population": "petite",
+    "flag_colors": [
+      "jaune",
+      "blanc",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "timor-oriental",
+    "name": "Timor oriental",
+    "flag": "🇹🇱",
+    "continent": "Asie",
+    "language": [
+      "Tetum",
+      "Portugais"
+    ],
+    "capital": "Dili",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune",
+      "noir",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "egypte",
+    "name": "Égypte",
+    "flag": "🇪🇬",
+    "continent": "Afrique",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Le Caire",
+    "population": "tres_grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "aigle"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "maroc",
+    "name": "Maroc",
+    "flag": "🇲🇦",
+    "continent": "Afrique",
+    "language": [
+      "Arabe",
+      "Berbère"
+    ],
+    "capital": "Rabat",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "vert"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "algerie",
+    "name": "Algérie",
+    "flag": "🇩🇿",
+    "continent": "Afrique",
+    "language": [
+      "Arabe",
+      "Berbère"
+    ],
+    "capital": "Alger",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "croissant"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "tunisie",
+    "name": "Tunisie",
+    "flag": "🇹🇳",
+    "continent": "Afrique",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Tunis",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "croissant",
+      "cercle"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "libye",
+    "name": "Libye",
+    "flag": "🇱🇾",
+    "continent": "Afrique",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Tripoli",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "noir",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "croissant"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "nigeria",
+    "name": "Nigéria",
+    "flag": "🇳🇬",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Abuja",
+    "population": "tres_grande",
+    "flag_colors": [
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "afrique-du-sud",
+    "name": "Afrique du Sud",
+    "flag": "🇿🇦",
+    "continent": "Afrique",
+    "language": [
+      "Zoulou",
+      "Xhosa",
+      "Afrikaans",
+      "Anglais"
+    ],
+    "capital": "Pretoria",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "bleu",
+      "jaune",
+      "blanc",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "chevron"
+    ],
+    "flag_symbols": [],
+    "rarity": 2
+  },
+  {
+    "id": "kenya",
+    "name": "Kenya",
+    "flag": "🇰🇪",
+    "continent": "Afrique",
+    "language": [
+      "Swahili",
+      "Anglais"
+    ],
+    "capital": "Nairobi",
+    "population": "grande",
+    "flag_colors": [
+      "noir",
+      "rouge",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "bouclier"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "ethiopie",
+    "name": "Éthiopie",
+    "flag": "🇪🇹",
+    "continent": "Afrique",
+    "language": [
+      "Amharique"
+    ],
+    "capital": "Addis-Abeba",
+    "population": "tres_grande",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "cercle"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "ghana",
+    "name": "Ghana",
+    "flag": "🇬🇭",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Accra",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "or",
+      "vert",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "senegal",
+    "name": "Sénégal",
+    "flag": "🇸🇳",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Dakar",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "cote-divoire",
+    "name": "Côte d'Ivoire",
+    "flag": "🇨🇮",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Yamoussoukro",
+    "population": "grande",
+    "flag_colors": [
+      "orange",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "cameroun",
+    "name": "Cameroun",
+    "flag": "🇨🇲",
+    "continent": "Afrique",
+    "language": [
+      "Français",
+      "Anglais"
+    ],
+    "capital": "Yaoundé",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 3
+  },
+  {
+    "id": "tanzanie",
+    "name": "Tanzanie",
+    "flag": "🇹🇿",
+    "continent": "Afrique",
+    "language": [
+      "Swahili",
+      "Anglais"
+    ],
+    "capital": "Dodoma",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "bleu",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "mozambique",
+    "name": "Mozambique",
+    "flag": "🇲🇿",
+    "continent": "Afrique",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "Maputo",
+    "population": "grande",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "noir",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "livre",
+      "fusil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "angola",
+    "name": "Angola",
+    "flag": "🇦🇴",
+    "continent": "Afrique",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "Luanda",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "noir",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "machette",
+      "roue"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "madagascar",
+    "name": "Madagascar",
+    "flag": "🇲🇬",
+    "continent": "Afrique",
+    "language": [
+      "Malgache",
+      "Français"
+    ],
+    "capital": "Antananarivo",
+    "population": "grande",
+    "flag_colors": [
+      "blanc",
+      "rouge",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "ouganda",
+    "name": "Ouganda",
+    "flag": "🇺🇬",
+    "continent": "Afrique",
+    "language": [
+      "Swahili",
+      "Anglais"
+    ],
+    "capital": "Kampala",
+    "population": "grande",
+    "flag_colors": [
+      "noir",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "oiseau"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "zimbabwe",
+    "name": "Zimbabwe",
+    "flag": "🇿🇼",
+    "continent": "Afrique",
+    "language": [
+      "Anglais",
+      "Shona",
+      "Ndébélé"
+    ],
+    "capital": "Harare",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge",
+      "noir",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoile",
+      "oiseau"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "zambie",
+    "name": "Zambie",
+    "flag": "🇿🇲",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Lusaka",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "rouge",
+      "noir",
+      "orange"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "aigle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "mali",
+    "name": "Mali",
+    "flag": "🇲🇱",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Bamako",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 3
+  },
+  {
+    "id": "guinea",
+    "name": "Guinée",
+    "flag": "🇬🇳",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Conakry",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "burkina-faso",
+    "name": "Burkina Faso",
+    "flag": "🇧🇫",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Ouagadougou",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "niger",
+    "name": "Niger",
+    "flag": "🇳🇪",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Niamey",
+    "population": "petite",
+    "flag_colors": [
+      "orange",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "cercle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "tchad",
+    "name": "Tchad",
+    "flag": "🇹🇩",
+    "continent": "Afrique",
+    "language": [
+      "Français",
+      "Arabe"
+    ],
+    "capital": "N'Djaména",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "soudan",
+    "name": "Soudan",
+    "flag": "🇸🇩",
+    "continent": "Afrique",
+    "language": [
+      "Arabe",
+      "Anglais"
+    ],
+    "capital": "Khartoum",
+    "population": "grande",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "noir",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "somalie",
+    "name": "Somalie",
+    "flag": "🇸🇴",
+    "continent": "Afrique",
+    "language": [
+      "Somali",
+      "Arabe"
+    ],
+    "capital": "Mogadiscio",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "mauritanie",
+    "name": "Mauritanie",
+    "flag": "🇲🇷",
+    "continent": "Afrique",
+    "language": [
+      "Arabe"
+    ],
+    "capital": "Nouakchott",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "croissant",
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "cap-vert",
+    "name": "Cap-Vert",
+    "flag": "🇨🇻",
+    "continent": "Afrique",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "Praia",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "rwanda",
+    "name": "Rwanda",
+    "flag": "🇷🇼",
+    "continent": "Afrique",
+    "language": [
+      "Kinyarwanda",
+      "Français",
+      "Anglais"
+    ],
+    "capital": "Kigali",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "togo",
+    "name": "Togo",
+    "flag": "🇹🇬",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Lomé",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "benin",
+    "name": "Bénin",
+    "flag": "🇧🇯",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Porto-Novo",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_verticales",
+      "horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "gabon",
+    "name": "Gabon",
+    "flag": "🇬🇦",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Libreville",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "congo",
+    "name": "Congo",
+    "flag": "🇨🇬",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Brazzaville",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "rdc",
+    "name": "RD Congo",
+    "flag": "🇨🇩",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Kinshasa",
+    "population": "tres_grande",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "namibie",
+    "name": "Namibie",
+    "flag": "🇳🇦",
+    "continent": "Afrique",
+    "language": [
+      "Anglais",
+      "Afrikaans"
+    ],
+    "capital": "Windhoek",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "vert",
+      "blanc",
+      "or"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "botswana",
+    "name": "Botswana",
+    "flag": "🇧🇼",
+    "continent": "Afrique",
+    "language": [
+      "Anglais",
+      "Setswana"
+    ],
+    "capital": "Gaborone",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "australie",
+    "name": "Australie",
+    "flag": "🇦🇺",
+    "continent": "Océanie",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Canberra",
+    "population": "grande",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "union_jack"
+    ],
+    "flag_symbols": [
+      "croix",
+      "etoiles"
+    ],
+    "rarity": 1
+  },
+  {
+    "id": "nouvelle-zelande",
+    "name": "Nouvelle-Zélande",
+    "flag": "🇳🇿",
+    "continent": "Océanie",
+    "language": [
+      "Anglais",
+      "Maori"
+    ],
+    "capital": "Wellington",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "union_jack"
+    ],
+    "flag_symbols": [
+      "croix",
+      "etoiles"
+    ],
+    "rarity": 2
+  },
+  {
+    "id": "fidji",
+    "name": "Fidji",
+    "flag": "🇫🇯",
+    "continent": "Océanie",
+    "language": [
+      "Anglais",
+      "Fidjien"
+    ],
+    "capital": "Suva",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "union_jack",
+      "armoiries"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "papouasie",
+    "name": "Papouasie-Nouvelle-Guinée",
+    "flag": "🇵🇬",
+    "continent": "Océanie",
+    "language": [
+      "Anglais",
+      "Tok Pisin"
+    ],
+    "capital": "Port Moresby",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "noir",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "etoiles",
+      "oiseau"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "samoa",
+    "name": "Samoa",
+    "flag": "🇼🇸",
+    "continent": "Océanie",
+    "language": [
+      "Samoan",
+      "Anglais"
+    ],
+    "capital": "Apia",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "tonga",
+    "name": "Tonga",
+    "flag": "🇹🇴",
+    "continent": "Océanie",
+    "language": [
+      "Tongien",
+      "Anglais"
+    ],
+    "capital": "Nuku'alofa",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "croix"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "vanuatu",
+    "name": "Vanuatu",
+    "flag": "🇻🇺",
+    "continent": "Océanie",
+    "language": [
+      "Bichlamar",
+      "Anglais",
+      "Français"
+    ],
+    "capital": "Port-Vila",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "noir",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "triangle",
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "motif"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "kiribati",
+    "name": "Kiribati",
+    "flag": "🇰🇮",
+    "continent": "Océanie",
+    "language": [
+      "Gilbertin",
+      "Anglais"
+    ],
+    "capital": "Tarawa",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "soleil",
+      "oiseau"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "iles-salomon",
+    "name": "Îles Salomon",
+    "flag": "🇸🇧",
+    "continent": "Océanie",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Honiara",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "vert",
+      "jaune",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "micronesie",
+    "name": "Micronésie",
+    "flag": "🇫🇲",
+    "continent": "Océanie",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Palikir",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "vatican",
+    "name": "Vatican",
+    "flag": "🇻🇦",
+    "continent": "Europe",
+    "language": [
+      "Italien",
+      "Latin"
+    ],
+    "capital": "Vatican",
+    "population": "petite",
+    "flag_colors": [
+      "jaune",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "cles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "bhoutan",
+    "name": "Bhoutan",
+    "flag": "🇧🇹",
+    "continent": "Asie",
+    "language": [
+      "Dzongkha"
+    ],
+    "capital": "Thimphou",
+    "population": "petite",
+    "flag_colors": [
+      "orange",
+      "rouge",
+      "jaune",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "dragon"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "maldives",
+    "name": "Maldives",
+    "flag": "🇲🇻",
+    "continent": "Asie",
+    "language": [
+      "Maldivien"
+    ],
+    "capital": "Malé",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "fond_uni",
+      "rectangle"
+    ],
+    "flag_symbols": [
+      "croissant"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "djibouti",
+    "name": "Djibouti",
+    "flag": "🇩🇯",
+    "continent": "Afrique",
+    "language": [
+      "Arabe",
+      "Français"
+    ],
+    "capital": "Djibouti",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "vert",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "triangle",
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "erythree",
+    "name": "Érythrée",
+    "flag": "🇪🇷",
+    "continent": "Afrique",
+    "language": [
+      "Tigrigna",
+      "Arabe",
+      "Anglais"
+    ],
+    "capital": "Asmara",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "vert",
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "triangle",
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "feuille",
+      "branche"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "lesotho",
+    "name": "Lesotho",
+    "flag": "🇱🇸",
+    "continent": "Afrique",
+    "language": [
+      "Sotho",
+      "Anglais"
+    ],
+    "capital": "Maseru",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "vert",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "chapeau"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "eswatini",
+    "name": "Eswatini",
+    "flag": "🇸🇿",
+    "continent": "Afrique",
+    "language": [
+      "Swati",
+      "Anglais"
+    ],
+    "capital": "Mbabane",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "rouge",
+      "noir",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "bouclier",
+      "lances"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "guinee-bissau",
+    "name": "Guinée-Bissau",
+    "flag": "🇬🇼",
+    "continent": "Afrique",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "Bissau",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune",
+      "vert",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "guinee-equatoriale",
+    "name": "Guinée équatoriale",
+    "flag": "🇬🇶",
+    "continent": "Afrique",
+    "language": [
+      "Espagnol",
+      "Français",
+      "Portugais"
+    ],
+    "capital": "Malabo",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "rouge",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "armoiries",
+      "arbre"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "sao-tome",
+    "name": "São Tomé-et-Príncipe",
+    "flag": "🇸🇹",
+    "continent": "Afrique",
+    "language": [
+      "Portugais"
+    ],
+    "capital": "São Tomé",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "rouge",
+      "noir"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "comores",
+    "name": "Comores",
+    "flag": "🇰🇲",
+    "continent": "Afrique",
+    "language": [
+      "Comorien",
+      "Arabe",
+      "Français"
+    ],
+    "capital": "Moroni",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "jaune",
+      "rouge",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "croissant",
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "seychelles",
+    "name": "Seychelles",
+    "flag": "🇸🇨",
+    "continent": "Afrique",
+    "language": [
+      "Créole",
+      "Anglais",
+      "Français"
+    ],
+    "capital": "Victoria",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "rouge",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_rayonnantes"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "maurice",
+    "name": "Maurice",
+    "flag": "🇲🇺",
+    "continent": "Afrique",
+    "language": [
+      "Anglais",
+      "Français",
+      "Créole"
+    ],
+    "capital": "Port-Louis",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "malawi",
+    "name": "Malawi",
+    "flag": "🇲🇼",
+    "continent": "Afrique",
+    "language": [
+      "Chichewa",
+      "Anglais"
+    ],
+    "capital": "Lilongwe",
+    "population": "petite",
+    "flag_colors": [
+      "noir",
+      "rouge",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "sierra-leone",
+    "name": "Sierra Leone",
+    "flag": "🇸🇱",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Freetown",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "liberia",
+    "name": "Liberia",
+    "flag": "🇱🇷",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Monrovia",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "soudan-du-sud",
+    "name": "Soudan du Sud",
+    "flag": "🇸🇸",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Djouba",
+    "population": "petite",
+    "flag_colors": [
+      "noir",
+      "rouge",
+      "vert",
+      "blanc",
+      "jaune",
+      "bleu"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales",
+      "triangle"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "centrafrique",
+    "name": "République centrafricaine",
+    "flag": "🇨🇫",
+    "continent": "Afrique",
+    "language": [
+      "Français",
+      "Sango"
+    ],
+    "capital": "Bangui",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "vert",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "burundi",
+    "name": "Burundi",
+    "flag": "🇧🇮",
+    "continent": "Afrique",
+    "language": [
+      "Kirundi",
+      "Français",
+      "Anglais"
+    ],
+    "capital": "Gitega",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "blanc",
+      "vert"
+    ],
+    "flag_shapes": [
+      "croix_diagonale"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "gambie",
+    "name": "Gambie",
+    "flag": "🇬🇲",
+    "continent": "Afrique",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Banjul",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "bleu",
+      "vert",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "guinee-conakry",
+    "name": "Guinée",
+    "flag": "🇬🇳",
+    "continent": "Afrique",
+    "language": [
+      "Français"
+    ],
+    "capital": "Conakry",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [],
+    "rarity": 4
+  },
+  {
+    "id": "antigua",
+    "name": "Antigua-et-Barbuda",
+    "flag": "🇦🇬",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Saint John's",
+    "population": "petite",
+    "flag_colors": [
+      "noir",
+      "bleu",
+      "blanc",
+      "rouge",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "triangle",
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "soleil"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "dominique",
+    "name": "Dominique",
+    "flag": "🇩🇲",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Roseau",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "noir",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "croix"
+    ],
+    "flag_symbols": [
+      "oiseau",
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "grenade",
+    "name": "Grenade",
+    "flag": "🇬🇩",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Saint George's",
+    "population": "petite",
+    "flag_colors": [
+      "rouge",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoiles",
+      "muscade"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "saint-kitts",
+    "name": "Saint-Kitts-et-Nevis",
+    "flag": "🇰🇳",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Basseterre",
+    "population": "petite",
+    "flag_colors": [
+      "vert",
+      "jaune",
+      "noir",
+      "blanc",
+      "rouge"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "sainte-lucie",
+    "name": "Sainte-Lucie",
+    "flag": "🇱🇨",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Castries",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "blanc",
+      "noir",
+      "or"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "triangle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "saint-vincent",
+    "name": "Saint-Vincent-et-les-Grenadines",
+    "flag": "🇻🇨",
+    "continent": "Amérique centrale",
+    "language": [
+      "Anglais"
+    ],
+    "capital": "Kingstown",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "vert"
+    ],
+    "flag_shapes": [
+      "bandes_verticales"
+    ],
+    "flag_symbols": [
+      "losange"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "nauru",
+    "name": "Nauru",
+    "flag": "🇳🇷",
+    "continent": "Océanie",
+    "language": [
+      "Nauruan",
+      "Anglais"
+    ],
+    "capital": "Yaren",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_horizontales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "tuvalu",
+    "name": "Tuvalu",
+    "flag": "🇹🇻",
+    "continent": "Océanie",
+    "language": [
+      "Tuvaluan",
+      "Anglais"
+    ],
+    "capital": "Funafuti",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "union_jack"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "palaos",
+    "name": "Palaos",
+    "flag": "🇵🇼",
+    "continent": "Océanie",
+    "language": [
+      "Palauan",
+      "Anglais"
+    ],
+    "capital": "Ngerulmud",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "jaune"
+    ],
+    "flag_shapes": [
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "cercle"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "iles-marshall",
+    "name": "Îles Marshall",
+    "flag": "🇲🇭",
+    "continent": "Océanie",
+    "language": [
+      "Marshallais",
+      "Anglais"
+    ],
+    "capital": "Majuro",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "orange",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "bandes_diagonales"
+    ],
+    "flag_symbols": [
+      "etoile"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "iles-cook",
+    "name": "Îles Cook",
+    "flag": "🇨🇰",
+    "continent": "Océanie",
+    "language": [
+      "Anglais",
+      "Maori des Cook"
+    ],
+    "capital": "Avarua",
+    "population": "petite",
+    "flag_colors": [
+      "bleu",
+      "rouge",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "union_jack"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  },
+  {
+    "id": "niue",
+    "name": "Niue",
+    "flag": "🇳🇺",
+    "continent": "Océanie",
+    "language": [
+      "Niuéen",
+      "Anglais"
+    ],
+    "capital": "Alofi",
+    "population": "petite",
+    "flag_colors": [
+      "jaune",
+      "bleu",
+      "blanc"
+    ],
+    "flag_shapes": [
+      "union_jack",
+      "fond_uni"
+    ],
+    "flag_symbols": [
+      "etoiles"
+    ],
+    "rarity": 4
+  }
+]

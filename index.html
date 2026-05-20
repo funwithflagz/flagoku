@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flagoku — Le jeu des pays</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f2ed;--surface:#fff;--border:#ddd9d0;--border2:#c5bfb3;
+  --text:#1c1a16;--text2:#6b6560;--text3:#a39d95;
+  --green:#2a6342;--gbg:#e8f2ec;--gbd:#8dbfa0;
+  --red:#b53020;--rbg:#fbeeed;--rbd:#dda090;
+  --r1:#b0bec5;--r2:#f6a623;--r3:#e05c30;--r5:#8b5cf6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+
+header{width:100%;max-width:680px;padding:22px 16px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.logo{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.5px}
+.logo span{color:var(--green)}
+.hright{display:flex;align-items:center;gap:8px}
+.dlbl{font-size:12px;color:var(--text3);font-weight:500}
+.dbadge{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1.5px solid}
+.d-easy{background:#e6f4ec;color:#1a5c35;border-color:#7ab895}
+.d-medium{background:#fef4e6;color:#7a4500;border-color:#e8a840}
+.d-hard{background:#fdecea;color:#8b2010;border-color:#d88070}
+.d-vhard{background:#f0eaff;color:#4a1d96;border-color:#a080d8}
+
+main{width:100%;max-width:680px;padding:18px 16px 48px}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:118px repeat(3,1fr);grid-template-rows:auto repeat(3,1fr);gap:5px;margin-bottom:14px}
+.corner{background:transparent}
+.col-hd{background:var(--surface);border:1.5px solid var(--border);border-radius:9px;padding:9px 7px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;min-height:80px;justify-content:center}
+.col-flags{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;line-height:1}
+.col-flag{font-size:15px}
+.ct{font-size:10.5px;color:var(--text2);line-height:1.3;font-weight:500}
+.row-hd{background:var(--surface);border:1.5px solid var(--border);border-radius:9px;padding:9px 11px;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:88px}
+.rc{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-weight:600}
+.rv{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;line-height:1.25}
+
+.cell{background:var(--surface);border:1.5px solid var(--border);border-radius:9px;min-height:88px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .13s,background .13s,transform .1s;position:relative;overflow:hidden}
+.cell:hover:not(.filled):not(.locked){border-color:var(--border2);background:#faf9f6;transform:scale(1.015)}
+.cell:active:not(.filled):not(.locked){transform:scale(.97)}
+.cell.filled{background:var(--gbg);border-color:var(--gbd);cursor:default}
+.cell.locked{background:#f8f5f2;opacity:.5;cursor:not-allowed}
+.cell.wrong{animation:shake .32s ease}
+.cell.pop{animation:pop .28s ease}
+.plus{font-size:20px;color:var(--border2)}
+.cell:hover:not(.filled):not(.locked) .plus{color:var(--text3)}
+.cans{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px;text-align:center}
+.aflag{font-size:24px;line-height:1}
+.aname{font-size:11px;font-weight:600;color:var(--green);line-height:1.25;max-width:90px}
+.apts{font-size:10px;color:var(--green);background:white;border:1px solid var(--gbd);border-radius:999px;padding:1px 7px;font-weight:500}
+.rpip{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%}
+.rp1{background:var(--r1)}.rp2{background:var(--r2)}.rp3{background:var(--r3)}.rp5{background:var(--r5)}
+
+/* Scorebar */
+.scorebar{display:flex;background:var(--surface);border:1.5px solid var(--border);border-radius:13px;overflow:hidden;margin-bottom:11px}
+.sbb{flex:1;padding:11px 14px;display:flex;flex-direction:column;align-items:center;gap:2px;border-right:1px solid var(--border)}
+.sbb:last-child{border-right:none}
+.sbv{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;line-height:1}
+.sbl{font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.tdots,.pdots{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:center}
+.tdot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--border2);transition:background .2s,border-color .2s}
+.tdot.used{background:var(--rbg);border-color:var(--rbd)}
+.pdot{width:10px;height:10px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border2);transition:background .25s}
+.pdot.done{background:var(--green);border-color:var(--green)}
+.pdot.dead{background:var(--border);border-color:var(--border)}
+
+/* Legend */
+.legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+.li{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--text3)}
+.lp{width:8px;height:8px;border-radius:50%}
+
+/* Modal */
+.overlay{display:none;position:fixed;inset:0;background:rgba(28,26,22,.42);z-index:100;align-items:center;justify-content:center;padding:16px}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:22px;width:100%;max-width:370px;animation:mIn .18s ease}
+@keyframes mIn{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+.mtitle{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:3px}
+.msub{font-size:11.5px;color:var(--text3);margin-bottom:13px}
+.crit{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;line-height:1.6;margin-bottom:12px;color:var(--text2)}
+.crit strong{color:var(--text);font-weight:600}
+.mtries{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text3);margin-bottom:9px}
+.mtd{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--border2)}
+.mtd.used{background:var(--rbg);border-color:var(--rbd)}
+.rhint{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px;margin-bottom:10px}
+.selc{display:none;align-items:center;gap:9px;padding:9px 12px;background:var(--gbg);border:1.5px solid var(--gbd);border-radius:8px;margin-bottom:9px}
+.selc.on{display:flex}
+.selcflag{font-size:20px;line-height:1}
+.selcname{flex:1;font-weight:600;font-size:13.5px}
+.selclear{background:none;border:none;cursor:pointer;color:var(--text3);font-size:17px;padding:1px 3px;line-height:1;border-radius:4px;transition:color .13s}
+.selclear:hover{color:var(--text)}
+.iwrap{position:relative;margin-bottom:7px}
+.iwrap input{width:100%;padding:10px 13px;font-size:14.5px;font-family:'Inter',sans-serif;border:1.5px solid var(--border2);border-radius:8px;background:var(--bg);color:var(--text);outline:none;transition:border-color .13s}
+.iwrap input:focus{border-color:var(--green)}
+.sugs{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--surface);border:1.5px solid var(--border2);border-radius:9px;z-index:300;max-height:205px;overflow-y:auto;box-shadow:0 6px 20px rgba(0,0,0,.09)}
+.sugs.open{display:block}
+.sug{padding:9px 13px;cursor:pointer;font-size:13.5px;transition:background .1s;color:var(--text)}
+.sug:hover,.sug.hi{background:var(--bg)}
+.sug em{font-style:normal;font-weight:600;color:var(--green)}
+.err{font-size:11.5px;color:var(--red);min-height:15px;margin-bottom:7px;font-weight:500}
+.actions{display:flex;gap:7px}
+.btn{padding:9px 15px;border-radius:8px;font-size:13.5px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;border:1.5px solid;transition:background .13s,transform .1s}
+.btn:active{transform:scale(.97)}
+.btnc{flex:1;background:var(--bg);border-color:var(--border2);color:var(--text2)}
+.btnc:hover{background:var(--border)}
+.btnok{flex:2;background:var(--green);border-color:var(--green);color:#fff}
+.btnok:hover{background:#225235}
+.btnok:disabled{opacity:.4;cursor:not-allowed}
+
+/* End screen */
+.end{display:none;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:26px;text-align:center;margin-top:10px}
+.end.open{display:block}
+.eicon{font-size:44px;margin-bottom:10px}
+.etitle{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:5px}
+.escore{font-family:'Syne',sans-serif;font-size:46px;font-weight:800;color:var(--green);line-height:1;margin:12px 0}
+.esub{font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.65}
+.sharebox{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:13px;font-family:monospace;font-size:13px;white-space:pre;text-align:left;margin-bottom:16px;overflow-x:auto;color:var(--text);line-height:1.6}
+
+/* Share buttons */
+.share-title{font-size:12px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.share-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.share-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;border:1.5px solid;transition:background .13s,transform .1s;text-decoration:none}
+.share-btn:active{transform:scale(.97)}
+.sb-copy{background:var(--green);border-color:var(--green);color:#fff}
+.sb-copy:hover{background:#225235}
+.sb-copy.cp{background:#1a7a4a}
+.sb-native{background:var(--bg);border-color:var(--border2);color:var(--text)}
+.sb-native:hover{background:var(--border)}
+.sb-wa{background:#25D366;border-color:#25D366;color:#fff}
+.sb-wa:hover{background:#1da851}
+.sb-mail{background:var(--bg);border-color:var(--border2);color:var(--text)}
+.sb-mail:hover{background:var(--border)}
+.sb-sms{background:var(--bg);border-color:var(--border2);color:var(--text)}
+.sb-sms:hover{background:var(--border)}
+.share-icon{font-size:16px;line-height:1}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.055)}}
+
+@media(max-width:460px){
+  .grid{grid-template-columns:96px repeat(3,1fr);gap:4px}
+  .row-hd{min-height:76px;padding:8px}
+  .rv{font-size:11.5px}
+  .cell{min-height:76px}
+  .share-btns{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Flag<span>oku</span></div>
+  <div class="hright">
+    <span class="dlbl" id="dlbl">Grille #1</span>
+    <span class="dbadge d-easy" id="dbadge">Facile</span>
+  </div>
+</header>
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="scorebar">
+    <div class="sbb"><span class="sbv" id="sval">0</span><span class="sbl">Points</span></div>
+    <div class="sbb">
+      <div class="tdots"><div class="tdot" id="td0"></div><div class="tdot" id="td1"></div><div class="tdot" id="td2"></div></div>
+      <span class="sbl">Essais / case</span>
+    </div>
+    <div class="sbb"><div class="pdots" id="pdots"></div><span class="sbl">Cases</span></div>
+  </div>
+  <div class="legend">
+    <div class="li"><div class="lp" style="background:var(--r1)"></div>Commun ×1</div>
+    <div class="li"><div class="lp" style="background:var(--r2)"></div>Peu commun ×2</div>
+    <div class="li"><div class="lp" style="background:var(--r3)"></div>Rare ×3</div>
+    <div class="li"><div class="lp" style="background:var(--r5)"></div>Unique ×5</div>
+  </div>
+  <div class="end" id="end">
+    <div class="eicon" id="eicon">🌍</div>
+    <div class="etitle" id="etitle">Grille terminée !</div>
+    <div class="escore" id="escore">0</div>
+    <div class="esub" id="esub"></div>
+    <div class="sharebox" id="sharebox"></div>
+    <div class="share-title">Partager avec tes amis</div>
+    <div class="share-btns">
+      <button class="share-btn sb-copy" id="sb-copy" onclick="shareCopy()"><span class="share-icon">📋</span>Copier</button>
+      <button class="share-btn sb-native" id="sb-native" onclick="shareNative()" style="display:none"><span class="share-icon">↗️</span>Partager</button>
+      <a class="share-btn sb-wa" id="sb-wa" href="#" onclick="shareWA(event)"><span class="share-icon">💬</span>WhatsApp</a>
+      <a class="share-btn sb-mail" id="sb-mail" href="#" onclick="shareMail(event)"><span class="share-icon">✉️</span>E-mail</a>
+      <a class="share-btn sb-sms" id="sb-sms" href="#" onclick="shareSMS(event)"><span class="share-icon">📱</span>SMS</a>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="overlay" id="overlay" onclick="bgClose(event)">
+  <div class="modal">
+    <div class="mtitle">Quel pays ?</div>
+    <div class="msub">Trouve un pays qui satisfait les deux critères</div>
+    <div class="crit" id="crit"></div>
+    <div class="mtries">
+      <div class="mtd" id="mt0"></div><div class="mtd" id="mt1"></div><div class="mtd" id="mt2"></div>
+      <span id="ttxt">3 essais restants</span>
+    </div>
+    <div class="rhint" id="rhint"></div>
+    <div class="selc" id="selc">
+      <span class="selcflag" id="scflag"></span>
+      <span class="selcname" id="scname"></span>
+      <button class="selclear" onclick="clearSel()" aria-label="Effacer">✕</button>
+    </div>
+    <div class="iwrap" id="iwrap">
+      <input type="text" id="inp" placeholder="Tape un pays…" autocomplete="off"/>
+      <div class="sugs" id="sugs"></div>
+    </div>
+    <div class="err" id="err"></div>
+    <div class="actions">
+      <button class="btn btnc" onclick="closeModal()">Annuler</button>
+      <button class="btn btnok" id="bok" onclick="submit()" disabled>Valider →</button>
+    </div>
+  </div>
+</div>
+<script>
+const COUNTRIES=[
+  {id:"france",name:"France",flag:"🇫🇷",continent:"Europe",language:["Français"],capital:"Paris",population:"grande",flag_colors:["bleu", "blanc", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:1},
+  {id:"espagne",name:"Espagne",flag:"🇪🇸",continent:"Europe",language:["Espagnol"],capital:"Madrid",population:"grande",flag_colors:["rouge", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:1},
+  {id:"allemagne",name:"Allemagne",flag:"🇩🇪",continent:"Europe",language:["Allemand"],capital:"Berlin",population:"grande",flag_colors:["noir", "rouge", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:1},
+  {id:"italie",name:"Italie",flag:"🇮🇹",continent:"Europe",language:["Italien"],capital:"Rome",population:"grande",flag_colors:["vert", "blanc", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:1},
+  {id:"portugal",name:"Portugal",flag:"🇵🇹",continent:"Europe",language:["Portugais"],capital:"Lisbonne",population:"moyenne",flag_colors:["vert", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["armoiries"],rarity:2},
+  {id:"belgique",name:"Belgique",flag:"🇧🇪",continent:"Europe",language:["Français", "Néerlandais", "Allemand"],capital:"Bruxelles",population:"moyenne",flag_colors:["noir", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:1},
+  {id:"pays-bas",name:"Pays-Bas",flag:"🇳🇱",continent:"Europe",language:["Néerlandais"],capital:"Amsterdam",population:"moyenne",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"suisse",name:"Suisse",flag:"🇨🇭",continent:"Europe",language:["Français", "Allemand", "Italien", "Romanche"],capital:"Berne",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["carre"],flag_symbols:["croix"],rarity:2},
+  {id:"autriche",name:"Autriche",flag:"🇦🇹",continent:"Europe",language:["Allemand"],capital:"Vienne",population:"moyenne",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"pologne",name:"Pologne",flag:"🇵🇱",continent:"Europe",language:["Polonais"],capital:"Varsovie",population:"grande",flag_colors:["blanc", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"suede",name:"Suède",flag:"🇸🇪",continent:"Europe",language:["Suédois"],capital:"Stockholm",population:"moyenne",flag_colors:["bleu", "jaune"],flag_shapes:["croix_nordique"],flag_symbols:["croix"],rarity:2},
+  {id:"norvege",name:"Norvège",flag:"🇳🇴",continent:"Europe",language:["Norvégien"],capital:"Oslo",population:"petite",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["croix_nordique"],flag_symbols:["croix"],rarity:2},
+  {id:"danemark",name:"Danemark",flag:"🇩🇰",continent:"Europe",language:["Danois"],capital:"Copenhague",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["croix_nordique"],flag_symbols:["croix"],rarity:2},
+  {id:"finlande",name:"Finlande",flag:"🇫🇮",continent:"Europe",language:["Finnois", "Suédois"],capital:"Helsinki",population:"petite",flag_colors:["blanc", "bleu"],flag_shapes:["croix_nordique"],flag_symbols:["croix"],rarity:3},
+  {id:"irlande",name:"Irlande",flag:"🇮🇪",continent:"Europe",language:["Anglais", "Irlandais"],capital:"Dublin",population:"petite",flag_colors:["vert", "blanc", "orange"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:2},
+  {id:"royaume-uni",name:"Royaume-Uni",flag:"🇬🇧",continent:"Europe",language:["Anglais"],capital:"Londres",population:"grande",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["union_jack"],flag_symbols:["croix"],rarity:1},
+  {id:"grece",name:"Grèce",flag:"🇬🇷",continent:"Europe",language:["Grec"],capital:"Athènes",population:"moyenne",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["croix"],rarity:2},
+  {id:"hongrie",name:"Hongrie",flag:"🇭🇺",continent:"Europe",language:["Hongrois"],capital:"Budapest",population:"moyenne",flag_colors:["rouge", "blanc", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"roumanie",name:"Roumanie",flag:"🇷🇴",continent:"Europe",language:["Roumain"],capital:"Bucarest",population:"moyenne",flag_colors:["bleu", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:3},
+  {id:"bulgarie",name:"Bulgarie",flag:"🇧🇬",continent:"Europe",language:["Bulgare"],capital:"Sofia",population:"petite",flag_colors:["blanc", "vert", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:3},
+  {id:"serbie",name:"Serbie",flag:"🇷🇸",continent:"Europe",language:["Serbe"],capital:"Belgrade",population:"petite",flag_colors:["rouge", "bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:3},
+  {id:"croatie",name:"Croatie",flag:"🇭🇷",continent:"Europe",language:["Croate"],capital:"Zagreb",population:"petite",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries", "damier"],rarity:3},
+  {id:"albanie",name:"Albanie",flag:"🇦🇱",continent:"Europe",language:["Albanais"],capital:"Tirana",population:"petite",flag_colors:["rouge", "noir"],flag_shapes:["fond_uni"],flag_symbols:["aigle"],rarity:4},
+  {id:"macedoine",name:"Macédoine du Nord",flag:"🇲🇰",continent:"Europe",language:["Macédonien"],capital:"Skopje",population:"petite",flag_colors:["rouge", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["soleil"],rarity:4},
+  {id:"slovaquie",name:"Slovaquie",flag:"🇸🇰",continent:"Europe",language:["Slovaque"],capital:"Bratislava",population:"petite",flag_colors:["blanc", "bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries", "croix"],rarity:3},
+  {id:"slovenie",name:"Slovénie",flag:"🇸🇮",continent:"Europe",language:["Slovène"],capital:"Ljubljana",population:"petite",flag_colors:["blanc", "bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"republique-tcheque",name:"République tchèque",flag:"🇨🇿",continent:"Europe",language:["Tchèque"],capital:"Prague",population:"moyenne",flag_colors:["blanc", "rouge", "bleu"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:[],rarity:3},
+  {id:"ukraine",name:"Ukraine",flag:"🇺🇦",continent:"Europe",language:["Ukrainien"],capital:"Kiev",population:"grande",flag_colors:["bleu", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"russie",name:"Russie",flag:"🇷🇺",continent:"Europe",language:["Russe"],capital:"Moscou",population:"tres_grande",flag_colors:["blanc", "bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:1},
+  {id:"bielorussie",name:"Biélorussie",flag:"🇧🇾",continent:"Europe",language:["Biélorusse", "Russe"],capital:"Minsk",population:"petite",flag_colors:["rouge", "vert", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["motif"],rarity:4},
+  {id:"estonie",name:"Estonie",flag:"🇪🇪",continent:"Europe",language:["Estonien"],capital:"Tallinn",population:"petite",flag_colors:["bleu", "noir", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"lettonie",name:"Lettonie",flag:"🇱🇻",continent:"Europe",language:["Letton"],capital:"Riga",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"lituanie",name:"Lituanie",flag:"🇱🇹",continent:"Europe",language:["Lituanien"],capital:"Vilnius",population:"petite",flag_colors:["jaune", "vert", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"luxembourg",name:"Luxembourg",flag:"🇱🇺",continent:"Europe",language:["Français", "Allemand", "Luxembourgeois"],capital:"Luxembourg",population:"petite",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:3},
+  {id:"islande",name:"Islande",flag:"🇮🇸",continent:"Europe",language:["Islandais"],capital:"Reykjavik",population:"petite",flag_colors:["bleu", "blanc", "rouge"],flag_shapes:["croix_nordique"],flag_symbols:["croix"],rarity:3},
+  {id:"malte",name:"Malte",flag:"🇲🇹",continent:"Europe",language:["Maltais", "Anglais"],capital:"La Valette",population:"petite",flag_colors:["blanc", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["croix"],rarity:4},
+  {id:"chypre",name:"Chypre",flag:"🇨🇾",continent:"Europe",language:["Grec", "Turc"],capital:"Nicosie",population:"petite",flag_colors:["blanc", "orange", "vert"],flag_shapes:["fond_uni"],flag_symbols:["carte", "feuille"],rarity:4},
+  {id:"bosnie",name:"Bosnie-Herzégovine",flag:"🇧🇦",continent:"Europe",language:["Bosnien", "Croate", "Serbe"],capital:"Sarajevo",population:"petite",flag_colors:["bleu", "jaune", "blanc"],flag_shapes:["triangle"],flag_symbols:["etoiles"],rarity:4},
+  {id:"montenegro",name:"Monténégro",flag:"🇲🇪",continent:"Europe",language:["Monténégrin"],capital:"Podgorica",population:"petite",flag_colors:["rouge", "or", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["armoiries", "aigle"],rarity:4},
+  {id:"kosovo",name:"Kosovo",flag:"🇽🇰",continent:"Europe",language:["Albanais", "Serbe"],capital:"Pristina",population:"petite",flag_colors:["bleu", "or", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["carte", "etoiles"],rarity:4},
+  {id:"moldavie",name:"Moldavie",flag:"🇲🇩",continent:"Europe",language:["Roumain"],capital:"Chișinău",population:"petite",flag_colors:["bleu", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["armoiries", "aigle"],rarity:4},
+  {id:"georgie",name:"Géorgie",flag:"🇬🇪",continent:"Europe",language:["Géorgien"],capital:"Tbilissi",population:"petite",flag_colors:["blanc", "rouge"],flag_shapes:["fond_uni"],flag_symbols:["croix"],rarity:4},
+  {id:"armenie",name:"Arménie",flag:"🇦🇲",continent:"Asie",language:["Arménien"],capital:"Erevan",population:"petite",flag_colors:["rouge", "bleu", "orange"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"azerbaidjan",name:"Azerbaïdjan",flag:"🇦🇿",continent:"Asie",language:["Azerbaïdjanais"],capital:"Bakou",population:"petite",flag_colors:["bleu", "rouge", "vert", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["croissant", "etoile"],rarity:4},
+  {id:"andorre",name:"Andorre",flag:"🇦🇩",continent:"Europe",language:["Catalan"],capital:"Andorre-la-Vieille",population:"petite",flag_colors:["bleu", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"monaco",name:"Monaco",flag:"🇲🇨",continent:"Europe",language:["Français"],capital:"Monaco",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"liechtenstein",name:"Liechtenstein",flag:"🇱🇮",continent:"Europe",language:["Allemand"],capital:"Vaduz",population:"petite",flag_colors:["bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["couronne"],rarity:4},
+  {id:"san-marin",name:"Saint-Marin",flag:"🇸🇲",continent:"Europe",language:["Italien"],capital:"Saint-Marin",population:"petite",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"bresil",name:"Brésil",flag:"🇧🇷",continent:"Amérique du Sud",language:["Portugais"],capital:"Brasilia",population:"tres_grande",flag_colors:["vert", "jaune", "bleu", "blanc"],flag_shapes:["losange", "cercle"],flag_symbols:["etoiles"],rarity:1},
+  {id:"argentine",name:"Argentine",flag:"🇦🇷",continent:"Amérique du Sud",language:["Espagnol"],capital:"Buenos Aires",population:"grande",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["soleil"],rarity:1},
+  {id:"colombie",name:"Colombie",flag:"🇨🇴",continent:"Amérique du Sud",language:["Espagnol"],capital:"Bogotá",population:"grande",flag_colors:["jaune", "bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"chili",name:"Chili",flag:"🇨🇱",continent:"Amérique du Sud",language:["Espagnol"],capital:"Santiago",population:"moyenne",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:2},
+  {id:"perou",name:"Pérou",flag:"🇵🇪",continent:"Amérique du Sud",language:["Espagnol"],capital:"Lima",population:"grande",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:2},
+  {id:"venezuela",name:"Venezuela",flag:"🇻🇪",continent:"Amérique du Sud",language:["Espagnol"],capital:"Caracas",population:"grande",flag_colors:["jaune", "bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoiles"],rarity:3},
+  {id:"equateur",name:"Équateur",flag:"🇪🇨",continent:"Amérique du Sud",language:["Espagnol"],capital:"Quito",population:"moyenne",flag_colors:["jaune", "bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:3},
+  {id:"bolivie",name:"Bolivie",flag:"🇧🇴",continent:"Amérique du Sud",language:["Espagnol"],capital:"Sucre",population:"moyenne",flag_colors:["rouge", "jaune", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:3},
+  {id:"uruguay",name:"Uruguay",flag:"🇺🇾",continent:"Amérique du Sud",language:["Espagnol"],capital:"Montevideo",population:"petite",flag_colors:["blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["soleil"],rarity:3},
+  {id:"paraguay",name:"Paraguay",flag:"🇵🇾",continent:"Amérique du Sud",language:["Espagnol", "Guarani"],capital:"Asunción",population:"petite",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"suriname",name:"Suriname",flag:"🇸🇷",continent:"Amérique du Sud",language:["Néerlandais"],capital:"Paramaribo",population:"petite",flag_colors:["vert", "blanc", "rouge", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"guyana",name:"Guyana",flag:"🇬🇾",continent:"Amérique du Sud",language:["Anglais"],capital:"Georgetown",population:"petite",flag_colors:["vert", "blanc", "jaune", "rouge", "noir"],flag_shapes:["triangle"],flag_symbols:[],rarity:4},
+  {id:"mexique",name:"Mexique",flag:"🇲🇽",continent:"Amérique du Nord",language:["Espagnol"],capital:"Mexico",population:"tres_grande",flag_colors:["vert", "blanc", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["armoiries", "aigle"],rarity:1},
+  {id:"etats-unis",name:"États-Unis",flag:"🇺🇸",continent:"Amérique du Nord",language:["Anglais"],capital:"Washington",population:"tres_grande",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoiles"],rarity:1},
+  {id:"canada",name:"Canada",flag:"🇨🇦",continent:"Amérique du Nord",language:["Anglais", "Français"],capital:"Ottawa",population:"grande",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:["feuille"],rarity:1},
+  {id:"cuba",name:"Cuba",flag:"🇨🇺",continent:"Amérique centrale",language:["Espagnol"],capital:"La Havane",population:"moyenne",flag_colors:["bleu", "blanc", "rouge"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoile"],rarity:2},
+  {id:"republique-dominicaine",name:"République dominicaine",flag:"🇩🇴",continent:"Amérique centrale",language:["Espagnol"],capital:"Saint-Domingue",population:"moyenne",flag_colors:["bleu", "rouge", "blanc"],flag_shapes:["croix"],flag_symbols:["croix", "armoiries"],rarity:3},
+  {id:"guatemala",name:"Guatemala",flag:"🇬🇹",continent:"Amérique centrale",language:["Espagnol"],capital:"Guatemala City",population:"moyenne",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:["armoiries"],rarity:3},
+  {id:"honduras",name:"Honduras",flag:"🇭🇳",continent:"Amérique centrale",language:["Espagnol"],capital:"Tegucigalpa",population:"petite",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoiles"],rarity:3},
+  {id:"nicaragua",name:"Nicaragua",flag:"🇳🇮",continent:"Amérique centrale",language:["Espagnol"],capital:"Managua",population:"petite",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["triangle"],rarity:4},
+  {id:"costa-rica",name:"Costa Rica",flag:"🇨🇷",continent:"Amérique centrale",language:["Espagnol"],capital:"San José",population:"petite",flag_colors:["bleu", "blanc", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:3},
+  {id:"panama",name:"Panama",flag:"🇵🇦",continent:"Amérique centrale",language:["Espagnol"],capital:"Panama City",population:"petite",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["quartiers"],flag_symbols:["etoiles"],rarity:4},
+  {id:"el-salvador",name:"El Salvador",flag:"🇸🇻",continent:"Amérique centrale",language:["Espagnol"],capital:"San Salvador",population:"petite",flag_colors:["bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"haiti",name:"Haïti",flag:"🇭🇹",continent:"Amérique centrale",language:["Français", "Haïtien"],capital:"Port-au-Prince",population:"petite",flag_colors:["bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"jamaique",name:"Jamaïque",flag:"🇯🇲",continent:"Amérique centrale",language:["Anglais"],capital:"Kingston",population:"petite",flag_colors:["noir", "vert", "jaune"],flag_shapes:["croix_diagonale"],flag_symbols:[],rarity:4},
+  {id:"trinite",name:"Trinité-et-Tobago",flag:"🇹🇹",continent:"Amérique centrale",language:["Anglais"],capital:"Port-d'Espagne",population:"petite",flag_colors:["rouge", "noir", "blanc"],flag_shapes:["bandes_diagonales"],flag_symbols:[],rarity:4},
+  {id:"belize",name:"Belize",flag:"🇧🇿",continent:"Amérique centrale",language:["Anglais"],capital:"Belmopan",population:"petite",flag_colors:["bleu", "rouge", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["armoiries"],rarity:4},
+  {id:"barbade",name:"Barbade",flag:"🇧🇧",continent:"Amérique centrale",language:["Anglais"],capital:"Bridgetown",population:"petite",flag_colors:["bleu", "jaune", "noir"],flag_shapes:["bandes_verticales"],flag_symbols:["trident"],rarity:4},
+  {id:"bahamas",name:"Bahamas",flag:"🇧🇸",continent:"Amérique centrale",language:["Anglais"],capital:"Nassau",population:"petite",flag_colors:["bleu", "or", "noir"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:[],rarity:4},
+  {id:"chine",name:"Chine",flag:"🇨🇳",continent:"Asie",language:["Mandarin"],capital:"Pékin",population:"tres_grande",flag_colors:["rouge", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["etoiles"],rarity:1},
+  {id:"japon",name:"Japon",flag:"🇯🇵",continent:"Asie",language:["Japonais"],capital:"Tokyo",population:"tres_grande",flag_colors:["blanc", "rouge"],flag_shapes:["fond_uni"],flag_symbols:["cercle"],rarity:1},
+  {id:"inde",name:"Inde",flag:"🇮🇳",continent:"Asie",language:["Hindi", "Anglais"],capital:"New Delhi",population:"tres_grande",flag_colors:["orange", "blanc", "vert", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["roue"],rarity:1},
+  {id:"coree-du-sud",name:"Corée du Sud",flag:"🇰🇷",continent:"Asie",language:["Coréen"],capital:"Séoul",population:"grande",flag_colors:["blanc", "rouge", "bleu", "noir"],flag_shapes:["fond_uni"],flag_symbols:["cercle", "triggrammes"],rarity:2},
+  {id:"coree-du-nord",name:"Corée du Nord",flag:"🇰🇵",continent:"Asie",language:["Coréen"],capital:"Pyongyang",population:"grande",flag_colors:["rouge", "bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"indonesie",name:"Indonésie",flag:"🇮🇩",continent:"Asie",language:["Indonésien"],capital:"Jakarta",population:"tres_grande",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"pakistan",name:"Pakistan",flag:"🇵🇰",continent:"Asie",language:["Ourdou", "Anglais"],capital:"Islamabad",population:"tres_grande",flag_colors:["vert", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["etoile", "croissant"],rarity:2},
+  {id:"bangladesh",name:"Bangladesh",flag:"🇧🇩",continent:"Asie",language:["Bengali"],capital:"Dacca",population:"tres_grande",flag_colors:["vert", "rouge"],flag_shapes:["fond_uni"],flag_symbols:["cercle"],rarity:3},
+  {id:"vietnam",name:"Vietnam",flag:"🇻🇳",continent:"Asie",language:["Vietnamien"],capital:"Hanoï",population:"tres_grande",flag_colors:["rouge", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["etoile"],rarity:2},
+  {id:"thailande",name:"Thaïlande",flag:"🇹🇭",continent:"Asie",language:["Thaï"],capital:"Bangkok",population:"grande",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:2},
+  {id:"malaisie",name:"Malaisie",flag:"🇲🇾",continent:"Asie",language:["Malais"],capital:"Kuala Lumpur",population:"grande",flag_colors:["rouge", "blanc", "bleu", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile", "croissant"],rarity:3},
+  {id:"philippines",name:"Philippines",flag:"🇵🇭",continent:"Asie",language:["Filipino", "Anglais"],capital:"Manille",population:"tres_grande",flag_colors:["bleu", "rouge", "blanc", "jaune"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoiles", "soleil"],rarity:3},
+  {id:"singapour",name:"Singapour",flag:"🇸🇬",continent:"Asie",language:["Anglais", "Mandarin", "Malais", "Tamoul"],capital:"Singapour",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoiles", "croissant"],rarity:3},
+  {id:"turquie",name:"Turquie",flag:"🇹🇷",continent:"Asie",language:["Turc"],capital:"Ankara",population:"grande",flag_colors:["rouge", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["etoile", "croissant"],rarity:2},
+  {id:"iran",name:"Iran",flag:"🇮🇷",continent:"Asie",language:["Persan"],capital:"Téhéran",population:"grande",flag_colors:["vert", "blanc", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries", "texte"],rarity:2},
+  {id:"irak",name:"Irak",flag:"🇮🇶",continent:"Asie",language:["Arabe", "Kurde"],capital:"Bagdad",population:"grande",flag_colors:["rouge", "blanc", "noir", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["texte"],rarity:3},
+  {id:"arabie-saoudite",name:"Arabie Saoudite",flag:"🇸🇦",continent:"Asie",language:["Arabe"],capital:"Riyad",population:"grande",flag_colors:["vert", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["texte", "sabre"],rarity:2},
+  {id:"israel",name:"Israël",flag:"🇮🇱",continent:"Asie",language:["Hébreu", "Arabe"],capital:"Jérusalem",population:"petite",flag_colors:["blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile_david"],rarity:3},
+  {id:"jordanie",name:"Jordanie",flag:"🇯🇴",continent:"Asie",language:["Arabe"],capital:"Amman",population:"petite",flag_colors:["noir", "blanc", "vert", "rouge"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoile"],rarity:4},
+  {id:"liban",name:"Liban",flag:"🇱🇧",continent:"Asie",language:["Arabe"],capital:"Beyrouth",population:"petite",flag_colors:["rouge", "blanc", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["arbre"],rarity:4},
+  {id:"syrie",name:"Syrie",flag:"🇸🇾",continent:"Asie",language:["Arabe"],capital:"Damas",population:"moyenne",flag_colors:["rouge", "blanc", "noir", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoiles"],rarity:3},
+  {id:"afghanistan",name:"Afghanistan",flag:"🇦🇫",continent:"Asie",language:["Dari", "Pachto"],capital:"Kaboul",population:"grande",flag_colors:["noir", "rouge", "vert", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:["mosque", "texte"],rarity:4},
+  {id:"mongolie",name:"Mongolie",flag:"🇲🇳",continent:"Asie",language:["Mongol"],capital:"Oulan-Bator",population:"petite",flag_colors:["rouge", "bleu", "jaune"],flag_shapes:["bandes_verticales"],flag_symbols:["soyombo"],rarity:4},
+  {id:"kazakhstan",name:"Kazakhstan",flag:"🇰🇿",continent:"Asie",language:["Kazakh", "Russe"],capital:"Astana",population:"moyenne",flag_colors:["bleu", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["soleil", "aigle", "motif"],rarity:4},
+  {id:"ouzbekistan",name:"Ouzbékistan",flag:"🇺🇿",continent:"Asie",language:["Ouzbek"],capital:"Tachkent",population:"grande",flag_colors:["bleu", "blanc", "vert", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["croissant", "etoiles"],rarity:4},
+  {id:"turkmenistan",name:"Turkménistan",flag:"🇹🇲",continent:"Asie",language:["Turkmène"],capital:"Achgabat",population:"petite",flag_colors:["vert", "rouge", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:["croissant", "etoiles", "motif"],rarity:4},
+  {id:"kirghizstan",name:"Kirghizistan",flag:"🇰🇬",continent:"Asie",language:["Kirghiz", "Russe"],capital:"Bichkek",population:"petite",flag_colors:["rouge", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["soleil", "motif"],rarity:4},
+  {id:"tadjikistan",name:"Tadjikistan",flag:"🇹🇯",continent:"Asie",language:["Tadjik"],capital:"Douchanbé",population:"petite",flag_colors:["rouge", "blanc", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["couronne", "etoiles"],rarity:4},
+  {id:"nepal",name:"Népal",flag:"🇳🇵",continent:"Asie",language:["Népalais"],capital:"Katmandou",population:"grande",flag_colors:["rouge", "bleu", "blanc"],flag_shapes:["double_triangle"],flag_symbols:["lune", "soleil"],rarity:4},
+  {id:"sri-lanka",name:"Sri Lanka",flag:"🇱🇰",continent:"Asie",language:["Cingalais", "Tamoul"],capital:"Colombo",population:"moyenne",flag_colors:["bordeaux", "or", "vert", "orange"],flag_shapes:["fond_uni"],flag_symbols:["lion", "feuille"],rarity:4},
+  {id:"myanmar",name:"Myanmar",flag:"🇲🇲",continent:"Asie",language:["Birman"],capital:"Naypyidaw",population:"grande",flag_colors:["jaune", "vert", "rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"cambodge",name:"Cambodge",flag:"🇰🇭",continent:"Asie",language:["Khmer"],capital:"Phnom Penh",population:"petite",flag_colors:["bleu", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["temple"],rarity:4},
+  {id:"laos",name:"Laos",flag:"🇱🇦",continent:"Asie",language:["Laotien"],capital:"Vientiane",population:"petite",flag_colors:["rouge", "bleu", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["cercle"],rarity:4},
+  {id:"taiwan",name:"Taïwan",flag:"🇹🇼",continent:"Asie",language:["Mandarin"],capital:"Taipei",population:"grande",flag_colors:["rouge", "bleu", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["soleil"],rarity:3},
+  {id:"oman",name:"Oman",flag:"🇴🇲",continent:"Asie",language:["Arabe"],capital:"Mascate",population:"petite",flag_colors:["rouge", "blanc", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"emirats",name:"Émirats arabes unis",flag:"🇦🇪",continent:"Asie",language:["Arabe"],capital:"Abou Dabi",population:"petite",flag_colors:["rouge", "vert", "blanc", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:3},
+  {id:"qatar",name:"Qatar",flag:"🇶🇦",continent:"Asie",language:["Arabe"],capital:"Doha",population:"petite",flag_colors:["bordeaux", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:4},
+  {id:"koweit",name:"Koweït",flag:"🇰🇼",continent:"Asie",language:["Arabe"],capital:"Koweït City",population:"petite",flag_colors:["vert", "blanc", "rouge", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"bahrein",name:"Bahreïn",flag:"🇧🇭",continent:"Asie",language:["Arabe"],capital:"Manama",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:4},
+  {id:"yemen",name:"Yémen",flag:"🇾🇪",continent:"Asie",language:["Arabe"],capital:"Sanaa",population:"grande",flag_colors:["rouge", "blanc", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:3},
+  {id:"brunei",name:"Brunéi",flag:"🇧🇳",continent:"Asie",language:["Malais"],capital:"Bandar Seri Begawan",population:"petite",flag_colors:["jaune", "blanc", "noir"],flag_shapes:["bandes_diagonales"],flag_symbols:["armoiries"],rarity:4},
+  {id:"timor-oriental",name:"Timor oriental",flag:"🇹🇱",continent:"Asie",language:["Tetum", "Portugais"],capital:"Dili",population:"petite",flag_colors:["rouge", "jaune", "noir", "blanc"],flag_shapes:["triangle"],flag_symbols:["etoile"],rarity:4},
+  {id:"egypte",name:"Égypte",flag:"🇪🇬",continent:"Afrique",language:["Arabe"],capital:"Le Caire",population:"tres_grande",flag_colors:["rouge", "blanc", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:["aigle"],rarity:1},
+  {id:"maroc",name:"Maroc",flag:"🇲🇦",continent:"Afrique",language:["Arabe", "Berbère"],capital:"Rabat",population:"grande",flag_colors:["rouge", "vert"],flag_shapes:["fond_uni"],flag_symbols:["etoile"],rarity:2},
+  {id:"algerie",name:"Algérie",flag:"🇩🇿",continent:"Afrique",language:["Arabe", "Berbère"],capital:"Alger",population:"grande",flag_colors:["vert", "blanc", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["etoile", "croissant"],rarity:2},
+  {id:"tunisie",name:"Tunisie",flag:"🇹🇳",continent:"Afrique",language:["Arabe"],capital:"Tunis",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["etoile", "croissant", "cercle"],rarity:3},
+  {id:"libye",name:"Libye",flag:"🇱🇾",continent:"Afrique",language:["Arabe"],capital:"Tripoli",population:"petite",flag_colors:["rouge", "noir", "vert", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile", "croissant"],rarity:4},
+  {id:"nigeria",name:"Nigéria",flag:"🇳🇬",continent:"Afrique",language:["Anglais"],capital:"Abuja",population:"tres_grande",flag_colors:["vert", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:2},
+  {id:"afrique-du-sud",name:"Afrique du Sud",flag:"🇿🇦",continent:"Afrique",language:["Zoulou", "Xhosa", "Afrikaans", "Anglais"],capital:"Pretoria",population:"grande",flag_colors:["rouge", "vert", "bleu", "jaune", "blanc", "noir"],flag_shapes:["bandes_horizontales", "chevron"],flag_symbols:[],rarity:2},
+  {id:"kenya",name:"Kenya",flag:"🇰🇪",continent:"Afrique",language:["Swahili", "Anglais"],capital:"Nairobi",population:"grande",flag_colors:["noir", "rouge", "vert", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["bouclier"],rarity:3},
+  {id:"ethiopie",name:"Éthiopie",flag:"🇪🇹",continent:"Afrique",language:["Amharique"],capital:"Addis-Abeba",population:"tres_grande",flag_colors:["vert", "jaune", "rouge", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile", "cercle"],rarity:2},
+  {id:"ghana",name:"Ghana",flag:"🇬🇭",continent:"Afrique",language:["Anglais"],capital:"Accra",population:"grande",flag_colors:["rouge", "or", "vert", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:3},
+  {id:"senegal",name:"Sénégal",flag:"🇸🇳",continent:"Afrique",language:["Français"],capital:"Dakar",population:"petite",flag_colors:["vert", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:["etoile"],rarity:3},
+  {id:"cote-divoire",name:"Côte d'Ivoire",flag:"🇨🇮",continent:"Afrique",language:["Français"],capital:"Yamoussoukro",population:"grande",flag_colors:["orange", "blanc", "vert"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:3},
+  {id:"cameroun",name:"Cameroun",flag:"🇨🇲",continent:"Afrique",language:["Français", "Anglais"],capital:"Yaoundé",population:"grande",flag_colors:["vert", "rouge", "jaune"],flag_shapes:["bandes_verticales"],flag_symbols:["etoile"],rarity:3},
+  {id:"tanzanie",name:"Tanzanie",flag:"🇹🇿",continent:"Afrique",language:["Swahili", "Anglais"],capital:"Dodoma",population:"grande",flag_colors:["vert", "jaune", "bleu", "noir"],flag_shapes:["bandes_diagonales"],flag_symbols:[],rarity:4},
+  {id:"mozambique",name:"Mozambique",flag:"🇲🇿",continent:"Afrique",language:["Portugais"],capital:"Maputo",population:"grande",flag_colors:["vert", "blanc", "noir", "rouge", "jaune"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoile", "livre", "fusil"],rarity:4},
+  {id:"angola",name:"Angola",flag:"🇦🇴",continent:"Afrique",language:["Portugais"],capital:"Luanda",population:"grande",flag_colors:["rouge", "noir", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["machette", "roue"],rarity:4},
+  {id:"madagascar",name:"Madagascar",flag:"🇲🇬",continent:"Afrique",language:["Malgache", "Français"],capital:"Antananarivo",population:"grande",flag_colors:["blanc", "rouge", "vert"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:4},
+  {id:"ouganda",name:"Ouganda",flag:"🇺🇬",continent:"Afrique",language:["Swahili", "Anglais"],capital:"Kampala",population:"grande",flag_colors:["noir", "jaune", "rouge"],flag_shapes:["bandes_horizontales"],flag_symbols:["oiseau"],rarity:4},
+  {id:"zimbabwe",name:"Zimbabwe",flag:"🇿🇼",continent:"Afrique",language:["Anglais", "Shona", "Ndébélé"],capital:"Harare",population:"petite",flag_colors:["vert", "jaune", "rouge", "noir", "blanc"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoile", "oiseau"],rarity:4},
+  {id:"zambie",name:"Zambie",flag:"🇿🇲",continent:"Afrique",language:["Anglais"],capital:"Lusaka",population:"petite",flag_colors:["vert", "rouge", "noir", "orange"],flag_shapes:["fond_uni"],flag_symbols:["aigle"],rarity:4},
+  {id:"mali",name:"Mali",flag:"🇲🇱",continent:"Afrique",language:["Français"],capital:"Bamako",population:"petite",flag_colors:["vert", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:3},
+  {id:"guinea",name:"Guinée",flag:"🇬🇳",continent:"Afrique",language:["Français"],capital:"Conakry",population:"petite",flag_colors:["rouge", "jaune", "vert"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:4},
+  {id:"burkina-faso",name:"Burkina Faso",flag:"🇧🇫",continent:"Afrique",language:["Français"],capital:"Ouagadougou",population:"petite",flag_colors:["rouge", "vert", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"niger",name:"Niger",flag:"🇳🇪",continent:"Afrique",language:["Français"],capital:"Niamey",population:"petite",flag_colors:["orange", "blanc", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["cercle"],rarity:4},
+  {id:"tchad",name:"Tchad",flag:"🇹🇩",continent:"Afrique",language:["Français", "Arabe"],capital:"N'Djaména",population:"petite",flag_colors:["bleu", "jaune", "rouge"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:4},
+  {id:"soudan",name:"Soudan",flag:"🇸🇩",continent:"Afrique",language:["Arabe", "Anglais"],capital:"Khartoum",population:"grande",flag_colors:["rouge", "blanc", "noir", "vert"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:[],rarity:4},
+  {id:"somalie",name:"Somalie",flag:"🇸🇴",continent:"Afrique",language:["Somali", "Arabe"],capital:"Mogadiscio",population:"petite",flag_colors:["bleu", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["etoile"],rarity:4},
+  {id:"mauritanie",name:"Mauritanie",flag:"🇲🇷",continent:"Afrique",language:["Arabe"],capital:"Nouakchott",population:"petite",flag_colors:["vert", "rouge", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["croissant", "etoile"],rarity:4},
+  {id:"cap-vert",name:"Cap-Vert",flag:"🇨🇻",continent:"Afrique",language:["Portugais"],capital:"Praia",population:"petite",flag_colors:["bleu", "blanc", "rouge", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoiles"],rarity:4},
+  {id:"rwanda",name:"Rwanda",flag:"🇷🇼",continent:"Afrique",language:["Kinyarwanda", "Français", "Anglais"],capital:"Kigali",population:"petite",flag_colors:["bleu", "jaune", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["soleil"],rarity:4},
+  {id:"togo",name:"Togo",flag:"🇹🇬",continent:"Afrique",language:["Français"],capital:"Lomé",population:"petite",flag_colors:["vert", "jaune", "rouge", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"benin",name:"Bénin",flag:"🇧🇯",continent:"Afrique",language:["Français"],capital:"Porto-Novo",population:"petite",flag_colors:["vert", "jaune", "rouge"],flag_shapes:["bandes_verticales", "horizontales"],flag_symbols:[],rarity:4},
+  {id:"gabon",name:"Gabon",flag:"🇬🇦",continent:"Afrique",language:["Français"],capital:"Libreville",population:"petite",flag_colors:["vert", "jaune", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"congo",name:"Congo",flag:"🇨🇬",continent:"Afrique",language:["Français"],capital:"Brazzaville",population:"petite",flag_colors:["vert", "jaune", "rouge"],flag_shapes:["bandes_diagonales"],flag_symbols:[],rarity:4},
+  {id:"rdc",name:"RD Congo",flag:"🇨🇩",continent:"Afrique",language:["Français"],capital:"Kinshasa",population:"tres_grande",flag_colors:["bleu", "rouge", "jaune"],flag_shapes:["bandes_diagonales"],flag_symbols:["etoile"],rarity:4},
+  {id:"namibie",name:"Namibie",flag:"🇳🇦",continent:"Afrique",language:["Anglais", "Afrikaans"],capital:"Windhoek",population:"petite",flag_colors:["bleu", "rouge", "vert", "blanc", "or"],flag_shapes:["bandes_diagonales"],flag_symbols:["soleil"],rarity:4},
+  {id:"botswana",name:"Botswana",flag:"🇧🇼",continent:"Afrique",language:["Anglais", "Setswana"],capital:"Gaborone",population:"petite",flag_colors:["bleu", "blanc", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"australie",name:"Australie",flag:"🇦🇺",continent:"Océanie",language:["Anglais"],capital:"Canberra",population:"grande",flag_colors:["bleu", "rouge", "blanc"],flag_shapes:["union_jack"],flag_symbols:["croix", "etoiles"],rarity:1},
+  {id:"nouvelle-zelande",name:"Nouvelle-Zélande",flag:"🇳🇿",continent:"Océanie",language:["Anglais", "Maori"],capital:"Wellington",population:"petite",flag_colors:["bleu", "rouge", "blanc"],flag_shapes:["union_jack"],flag_symbols:["croix", "etoiles"],rarity:2},
+  {id:"fidji",name:"Fidji",flag:"🇫🇯",continent:"Océanie",language:["Anglais", "Fidjien"],capital:"Suva",population:"petite",flag_colors:["bleu", "blanc", "rouge"],flag_shapes:["fond_uni"],flag_symbols:["union_jack", "armoiries"],rarity:4},
+  {id:"papouasie",name:"Papouasie-Nouvelle-Guinée",flag:"🇵🇬",continent:"Océanie",language:["Anglais", "Tok Pisin"],capital:"Port Moresby",population:"petite",flag_colors:["rouge", "noir", "jaune"],flag_shapes:["bandes_diagonales"],flag_symbols:["etoiles", "oiseau"],rarity:4},
+  {id:"samoa",name:"Samoa",flag:"🇼🇸",continent:"Océanie",language:["Samoan", "Anglais"],capital:"Apia",population:"petite",flag_colors:["rouge", "bleu", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["etoiles"],rarity:4},
+  {id:"tonga",name:"Tonga",flag:"🇹🇴",continent:"Océanie",language:["Tongien", "Anglais"],capital:"Nuku'alofa",population:"petite",flag_colors:["rouge", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["croix"],rarity:4},
+  {id:"vanuatu",name:"Vanuatu",flag:"🇻🇺",continent:"Océanie",language:["Bichlamar", "Anglais", "Français"],capital:"Port-Vila",population:"petite",flag_colors:["rouge", "vert", "noir", "jaune"],flag_shapes:["triangle", "bandes_horizontales"],flag_symbols:["motif"],rarity:4},
+  {id:"kiribati",name:"Kiribati",flag:"🇰🇮",continent:"Océanie",language:["Gilbertin", "Anglais"],capital:"Tarawa",population:"petite",flag_colors:["rouge", "blanc", "bleu", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["soleil", "oiseau"],rarity:4},
+  {id:"iles-salomon",name:"Îles Salomon",flag:"🇸🇧",continent:"Océanie",language:["Anglais"],capital:"Honiara",population:"petite",flag_colors:["bleu", "vert", "jaune", "blanc"],flag_shapes:["bandes_diagonales"],flag_symbols:["etoiles"],rarity:4},
+  {id:"micronesie",name:"Micronésie",flag:"🇫🇲",continent:"Océanie",language:["Anglais"],capital:"Palikir",population:"petite",flag_colors:["bleu", "blanc"],flag_shapes:["fond_uni"],flag_symbols:["etoiles"],rarity:4},
+  {id:"vatican",name:"Vatican",flag:"🇻🇦",continent:"Europe",language:["Italien", "Latin"],capital:"Vatican",population:"petite",flag_colors:["jaune", "blanc"],flag_shapes:["bandes_verticales"],flag_symbols:["armoiries", "cles"],rarity:4},
+  {id:"bhoutan",name:"Bhoutan",flag:"🇧🇹",continent:"Asie",language:["Dzongkha"],capital:"Thimphou",population:"petite",flag_colors:["orange", "rouge", "jaune", "blanc"],flag_shapes:["bandes_diagonales"],flag_symbols:["dragon"],rarity:4},
+  {id:"maldives",name:"Maldives",flag:"🇲🇻",continent:"Asie",language:["Maldivien"],capital:"Malé",population:"petite",flag_colors:["rouge", "vert", "blanc"],flag_shapes:["fond_uni", "rectangle"],flag_symbols:["croissant"],rarity:4},
+  {id:"djibouti",name:"Djibouti",flag:"🇩🇯",continent:"Afrique",language:["Arabe", "Français"],capital:"Djibouti",population:"petite",flag_colors:["bleu", "vert", "blanc", "rouge"],flag_shapes:["triangle", "bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"erythree",name:"Érythrée",flag:"🇪🇷",continent:"Afrique",language:["Tigrigna", "Arabe", "Anglais"],capital:"Asmara",population:"petite",flag_colors:["rouge", "vert", "bleu", "jaune"],flag_shapes:["triangle", "bandes_horizontales"],flag_symbols:["feuille", "branche"],rarity:4},
+  {id:"lesotho",name:"Lesotho",flag:"🇱🇸",continent:"Afrique",language:["Sotho", "Anglais"],capital:"Maseru",population:"petite",flag_colors:["bleu", "blanc", "vert", "noir"],flag_shapes:["bandes_horizontales"],flag_symbols:["chapeau"],rarity:4},
+  {id:"eswatini",name:"Eswatini",flag:"🇸🇿",continent:"Afrique",language:["Swati", "Anglais"],capital:"Mbabane",population:"petite",flag_colors:["bleu", "jaune", "rouge", "noir", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["bouclier", "lances"],rarity:4},
+  {id:"guinee-bissau",name:"Guinée-Bissau",flag:"🇬🇼",continent:"Afrique",language:["Portugais"],capital:"Bissau",population:"petite",flag_colors:["rouge", "jaune", "vert", "noir"],flag_shapes:["bandes_horizontales", "bandes_verticales"],flag_symbols:["etoile"],rarity:4},
+  {id:"guinee-equatoriale",name:"Guinée équatoriale",flag:"🇬🇶",continent:"Afrique",language:["Espagnol", "Français", "Portugais"],capital:"Malabo",population:"petite",flag_colors:["vert", "blanc", "rouge", "bleu"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["armoiries", "arbre"],rarity:4},
+  {id:"sao-tome",name:"São Tomé-et-Príncipe",flag:"🇸🇹",continent:"Afrique",language:["Portugais"],capital:"São Tomé",population:"petite",flag_colors:["vert", "jaune", "rouge", "noir"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoiles"],rarity:4},
+  {id:"comores",name:"Comores",flag:"🇰🇲",continent:"Afrique",language:["Comorien", "Arabe", "Français"],capital:"Moroni",population:"petite",flag_colors:["vert", "blanc", "jaune", "rouge", "bleu"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["croissant", "etoiles"],rarity:4},
+  {id:"seychelles",name:"Seychelles",flag:"🇸🇨",continent:"Afrique",language:["Créole", "Anglais", "Français"],capital:"Victoria",population:"petite",flag_colors:["bleu", "jaune", "rouge", "blanc", "vert"],flag_shapes:["bandes_rayonnantes"],flag_symbols:[],rarity:4},
+  {id:"maurice",name:"Maurice",flag:"🇲🇺",continent:"Afrique",language:["Anglais", "Français", "Créole"],capital:"Port-Louis",population:"petite",flag_colors:["rouge", "bleu", "jaune", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"malawi",name:"Malawi",flag:"🇲🇼",continent:"Afrique",language:["Chichewa", "Anglais"],capital:"Lilongwe",population:"petite",flag_colors:["noir", "rouge", "vert"],flag_shapes:["bandes_horizontales"],flag_symbols:["soleil"],rarity:4},
+  {id:"sierra-leone",name:"Sierra Leone",flag:"🇸🇱",continent:"Afrique",language:["Anglais"],capital:"Freetown",population:"petite",flag_colors:["vert", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"liberia",name:"Liberia",flag:"🇱🇷",continent:"Afrique",language:["Anglais"],capital:"Monrovia",population:"petite",flag_colors:["rouge", "blanc", "bleu"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"soudan-du-sud",name:"Soudan du Sud",flag:"🇸🇸",continent:"Afrique",language:["Anglais"],capital:"Djouba",population:"petite",flag_colors:["noir", "rouge", "vert", "blanc", "jaune", "bleu"],flag_shapes:["bandes_horizontales", "triangle"],flag_symbols:["etoile"],rarity:4},
+  {id:"centrafrique",name:"République centrafricaine",flag:"🇨🇫",continent:"Afrique",language:["Français", "Sango"],capital:"Bangui",population:"petite",flag_colors:["bleu", "blanc", "vert", "rouge", "jaune"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"burundi",name:"Burundi",flag:"🇧🇮",continent:"Afrique",language:["Kirundi", "Français", "Anglais"],capital:"Gitega",population:"petite",flag_colors:["rouge", "blanc", "vert"],flag_shapes:["croix_diagonale"],flag_symbols:["etoiles"],rarity:4},
+  {id:"gambie",name:"Gambie",flag:"🇬🇲",continent:"Afrique",language:["Anglais"],capital:"Banjul",population:"petite",flag_colors:["rouge", "bleu", "vert", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:[],rarity:4},
+  {id:"guinee-conakry",name:"Guinée",flag:"🇬🇳",continent:"Afrique",language:["Français"],capital:"Conakry",population:"petite",flag_colors:["rouge", "jaune", "vert"],flag_shapes:["bandes_verticales"],flag_symbols:[],rarity:4},
+  {id:"antigua",name:"Antigua-et-Barbuda",flag:"🇦🇬",continent:"Amérique centrale",language:["Anglais"],capital:"Saint John's",population:"petite",flag_colors:["noir", "bleu", "blanc", "rouge", "jaune"],flag_shapes:["triangle", "bandes_horizontales"],flag_symbols:["soleil"],rarity:4},
+  {id:"dominique",name:"Dominique",flag:"🇩🇲",continent:"Amérique centrale",language:["Anglais"],capital:"Roseau",population:"petite",flag_colors:["vert", "jaune", "noir", "blanc", "rouge"],flag_shapes:["croix"],flag_symbols:["oiseau", "etoiles"],rarity:4},
+  {id:"grenade",name:"Grenade",flag:"🇬🇩",continent:"Amérique centrale",language:["Anglais"],capital:"Saint George's",population:"petite",flag_colors:["rouge", "jaune", "vert"],flag_shapes:["fond_uni"],flag_symbols:["etoiles", "muscade"],rarity:4},
+  {id:"saint-kitts",name:"Saint-Kitts-et-Nevis",flag:"🇰🇳",continent:"Amérique centrale",language:["Anglais"],capital:"Basseterre",population:"petite",flag_colors:["vert", "jaune", "noir", "blanc", "rouge"],flag_shapes:["bandes_diagonales"],flag_symbols:["etoiles"],rarity:4},
+  {id:"sainte-lucie",name:"Sainte-Lucie",flag:"🇱🇨",continent:"Amérique centrale",language:["Anglais"],capital:"Castries",population:"petite",flag_colors:["bleu", "blanc", "noir", "or"],flag_shapes:["fond_uni"],flag_symbols:["triangle"],rarity:4},
+  {id:"saint-vincent",name:"Saint-Vincent-et-les-Grenadines",flag:"🇻🇨",continent:"Amérique centrale",language:["Anglais"],capital:"Kingstown",population:"petite",flag_colors:["bleu", "jaune", "vert"],flag_shapes:["bandes_verticales"],flag_symbols:["losange"],rarity:4},
+  {id:"nauru",name:"Nauru",flag:"🇳🇷",continent:"Océanie",language:["Nauruan", "Anglais"],capital:"Yaren",population:"petite",flag_colors:["bleu", "jaune", "blanc"],flag_shapes:["bandes_horizontales"],flag_symbols:["etoile"],rarity:4},
+  {id:"tuvalu",name:"Tuvalu",flag:"🇹🇻",continent:"Océanie",language:["Tuvaluan", "Anglais"],capital:"Funafuti",population:"petite",flag_colors:["bleu", "jaune", "blanc"],flag_shapes:["union_jack"],flag_symbols:["etoiles"],rarity:4},
+  {id:"palaos",name:"Palaos",flag:"🇵🇼",continent:"Océanie",language:["Palauan", "Anglais"],capital:"Ngerulmud",population:"petite",flag_colors:["bleu", "jaune"],flag_shapes:["fond_uni"],flag_symbols:["cercle"],rarity:4},
+  {id:"iles-marshall",name:"Îles Marshall",flag:"🇲🇭",continent:"Océanie",language:["Marshallais", "Anglais"],capital:"Majuro",population:"petite",flag_colors:["bleu", "orange", "blanc"],flag_shapes:["bandes_diagonales"],flag_symbols:["etoile"],rarity:4},
+  {id:"iles-cook",name:"Îles Cook",flag:"🇨🇰",continent:"Océanie",language:["Anglais", "Maori des Cook"],capital:"Avarua",population:"petite",flag_colors:["bleu", "rouge", "blanc"],flag_shapes:["union_jack"],flag_symbols:["etoiles"],rarity:4},
+  {id:"niue",name:"Niue",flag:"🇳🇺",continent:"Océanie",language:["Niuéen", "Anglais"],capital:"Alofi",population:"petite",flag_colors:["jaune", "bleu", "blanc"],flag_shapes:["union_jack", "fond_uni"],flag_symbols:["etoiles"],rarity:4}
+];
+const GRIDS=[
+  {id:1,difficulty:"easy",difficulty_label:"Facile",
+   cols:[
+     {id:"c1",label:"Contient du rouge",     examples:["🇫🇷","🇩🇰","🇯🇵"]},
+     {id:"c2",label:"Contient du bleu",      examples:["🇫🇷","🇬🇷","🇺🇳"]},
+     {id:"c3",label:"3 bandes horizontales", examples:["🇩🇪","🇳🇱","🇷🇺"]}
+   ],
+   rows:[
+     {id:"r1",category:"Continent",value:"Europe"},
+     {id:"r2",category:"Langue officielle",value:"Espagnol"},
+     {id:"r3",category:"Continent",value:"Asie"}
+   ],
+   cells:[
+     {row:"r1",col:"c1",valid:["france","espagne","pologne","autriche","portugal","danemark","pays-bas","belgique","hongrie","croatie","roumanie","lettonie","lituanie","serbie","bulgarie","albanie","slovaquie","islande","norvege","royaume-uni","georgie"],rc:1},
+     {row:"r1",col:"c2",valid:["france","pays-bas","grece","finlande","croatie","republique-tcheque","slovaquie","islande","norvege","royaume-uni","luxembourg","suede","estonie","lituanie","russie","bosnie","slovenie"],rc:1},
+     {row:"r1",col:"c3",valid:["espagne","pays-bas","allemagne","autriche","pologne","hongrie","bulgarie","russie","roumanie","lituanie","estonie","lettonie","serbie","suede","norvege","finlande","ukraine","grece","armenie","bielorussie","tchad"],rc:1},
+     {row:"r2",col:"c1",valid:["espagne","mexique","chili","cuba","venezuela","colombie","republique-dominicaine","costa-rica","el-salvador"],rc:2},
+     {row:"r2",col:"c2",valid:["espagne","cuba","chili","honduras","nicaragua","costa-rica","republique-dominicaine","venezuela","el-salvador"],rc:2},
+     {row:"r2",col:"c3",valid:["venezuela","colombie","equateur","honduras","nicaragua","costa-rica","el-salvador"],rc:2},
+     {row:"r3",col:"c1",valid:["chine","japon","inde","vietnam","bangladesh","malaisie","philippines","irak","liban","turquie","iran","syrie","cambodge","laos","myanmar","coree-du-nord"],rc:1},
+     {row:"r3",col:"c2",valid:["inde","coree-du-sud","thailande","malaisie","philippines","israel","singapour","turquie","laos","cambodge","taiwan"],rc:2},
+     {row:"r3",col:"c3",valid:["inde","vietnam","thailande","malaisie","philippines","coree-du-sud","russie","iran","irak","syrie","ouzbekistan","turquie","azerbaidjan","armenie"],rc:2}
+   ]},
+  {id:2,difficulty:"medium",difficulty_label:"Moyen",
+   cols:[
+     {id:"c1",label:"A une étoile",           examples:["🇲🇦","🇨🇳","🇧🇷"]},
+     {id:"c2",label:"Contient du vert",        examples:["🇮🇹","🇵🇰","🇳🇬"]},
+     {id:"c3",label:"3 bandes verticales",     examples:["🇫🇷","🇳🇬","🇲🇱"]}
+   ],
+   rows:[
+     {id:"r1",category:"Continent",value:"Afrique"},
+     {id:"r2",category:"Continent",value:"Amérique du Sud"},
+     {id:"r3",category:"Population",value:"Très grande (>100M)"}
+   ],
+   cells:[
+     {row:"r1",col:"c1",valid:["maroc","ghana","senegal","cameroun","ethiopie","burkina-faso","mauritanie","somalie","zimbabwe","cap-vert","rwanda","togo","rdc"],rc:2},
+     {row:"r1",col:"c2",valid:["nigeria","afrique-du-sud","senegal","ghana","cameroun","cote-divoire","kenya","ethiopie","algerie","mali","guinea","ouganda","zambie","togo","benin","gabon","congo","namibie"],rc:1},
+     {row:"r1",col:"c3",valid:["nigeria","cameroun","cote-divoire","senegal","algerie","mali","guinea","tchad"],rc:2},
+     {row:"r2",col:"c1",valid:["bresil","chili","venezuela","uruguay","equateur","perou","paraguay","suriname"],rc:2},
+     {row:"r2",col:"c2",valid:["bresil","bolivie","venezuela","equateur","perou","suriname","guyana"],rc:2},
+     {row:"r2",col:"c3",valid:["colombie","perou","france","italie","belgique","mexique","roumanie"],rc:3},
+     {row:"r3",col:"c1",valid:["chine","vietnam","pakistan","bresil","rdc"],rc:3},
+     {row:"r3",col:"c2",valid:["bangladesh","nigeria","pakistan","inde","mexique","ethiopie","rdc"],rc:2},
+     {row:"r3",col:"c3",valid:["mexique","france","nigeria"],rc:3}
+   ]},
+  {id:3,difficulty:"hard",difficulty_label:"Difficile",
+   cols:[
+     {id:"c1",label:"A un croissant",          examples:["🇹🇷","🇵🇰","🇲🇦"]},
+     {id:"c2",label:"Contient du jaune / or",  examples:["🇩🇪","🇧🇷","🇨🇳"]},
+     {id:"c3",label:"Fond uni (sans bandes)",  examples:["🇨🇳","🇯🇵","🇧🇩"]}
+   ],
+   rows:[
+     {id:"r1",category:"Continent",value:"Asie"},
+     {id:"r2",category:"Continent",value:"Afrique"},
+     {id:"r3",category:"Langue officielle",value:"Arabe"}
+   ],
+   cells:[
+     {row:"r1",col:"c1",valid:["pakistan","malaisie","singapour","turquie","azerbaidjan","ouzbekistan","turkmenistan","brunei"],rc:3},
+     {row:"r1",col:"c2",valid:["chine","vietnam","malaisie","mongolie","kirghizstan","brunei","timor-oriental"],rc:3},
+     {row:"r1",col:"c3",valid:["chine","japon","bangladesh","turquie","arabie-saoudite","vietnam","coree-du-sud","coree-du-nord","iran","taiwan","oman","somalie"],rc:2},
+     {row:"r2",col:"c1",valid:["algerie","tunisie","mauritanie","libye"],rc:3},
+     {row:"r2",col:"c2",valid:["ghana","senegal","cameroun","ethiopie","mali","burkina-faso","guinea","gabon","benin","togo","namibie","rdc"],rc:2},
+     {row:"r2",col:"c3",valid:["maroc","tunisie","somalie","zambie","mauritanie"],rc:3},
+     {row:"r3",col:"c1",valid:["arabie-saoudite","algerie","tunisie","mauritanie","libye"],rc:3},
+     {row:"r3",col:"c2",valid:["irak","egypte","emirats","koweit","syrie"],rc:3},
+     {row:"r3",col:"c3",valid:["arabie-saoudite","tunisie","somalie","mauritanie"],rc:3}
+   ]},
+  {id:4,difficulty:"very_hard",difficulty_label:"Très difficile",
+   cols:[
+     {id:"c1",label:"A un aigle",                      examples:["🇦🇱","🇩🇪","🇷🇴"]},
+     {id:"c2",label:"Contient du noir ET du jaune/or", examples:["🇩🇪","🇧🇪","🇯🇲"]},
+     {id:"c3",label:"A un arbre ou une plante",        examples:["🇱🇧","🇲🇹","🇧🇿"]}
+   ],
+   rows:[
+     {id:"r1",category:"Continent",value:"Europe"},
+     {id:"r2",category:"Continent",value:"Afrique"},
+     {id:"r3",category:"Langue officielle",value:"Portugais"}
+   ],
+   cells:[
+     {row:"r1",col:"c1",valid:["albanie","serbie","russie","allemagne","moldavie","montenegro"],rc:3},
+     {row:"r1",col:"c2",valid:["allemagne","belgique","estonie","bosnie"],rc:3},
+     {row:"r1",col:"c3",valid:["malte","chypre"],rc:5},
+     {row:"r2",col:"c1",valid:["egypte","angola","zambie","zimbabwe"],rc:4},
+     {row:"r2",col:"c2",valid:["angola","ghana","cameroun","ouganda","jamaique","namibie"],rc:4},
+     {row:"r2",col:"c3",valid:["angola"],rc:5},
+     {row:"r3",col:"c1",valid:["angola"],rc:5},
+     {row:"r3",col:"c2",valid:["angola"],rc:5},
+     {row:"r3",col:"c3",valid:["mozambique"],rc:5}
+   ]}
+];
+
+const BASE=[0,100,60,30];
+const CM={1:1,2:2,3:3,4:3,5:5};
+const BONUS=200,MAX_T=3;
+const PIP={1:"rp1",2:"rp2",3:"rp3",4:"rp3",5:"rp5"};
+const CLBL={1:"Commun ×1",2:"Peu commun ×2",3:"Rare ×3",5:"Unique ×5"};
+const DCLS={easy:"d-easy",medium:"d-medium",hard:"d-hard",very_hard:"d-vhard"};
+const PCLS=["--r1","--r2","--r3","--r3","--r5"];
+
+let G,ST,TR,SC,aCell,selC;
+const CM2=Object.fromEntries(COUNTRIES.map(c=>[c.id,c]));
+
+function todayIdx(){
+  const ep=new Date('2025-01-01').getTime();
+  const t=new Date();t.setHours(0,0,0,0);
+  return Math.floor((t.getTime()-ep)/86400000)%GRIDS.length;
+}
+
+function init(){
+  G=GRIDS[todayIdx()];
+  ST=Array.from({length:3},()=>Array(3).fill(null));
+  TR=Array.from({length:3},()=>Array(3).fill(0));
+  SC=0;aCell=null;selC=null;
+  const sv=localStorage.getItem('fgk_'+G.id);
+  if(sv){const s=JSON.parse(sv);ST=s.s;TR=s.t;SC=s.sc;}
+  document.getElementById('dlbl').textContent='Grille #'+G.id;
+  const db=document.getElementById('dbadge');
+  db.textContent=G.difficulty_label;db.className='dbadge '+DCLS[G.difficulty];
+  buildGrid();updSc();updProg();
+  if(ST.flat().filter(Boolean).length===9)showEnd();
+}
+function save(){localStorage.setItem('fgk_'+G.id,JSON.stringify({s:ST,t:TR,sc:SC}));}
+
+function buildGrid(){
+  const g=document.getElementById('grid');g.innerHTML='';
+  g.appendChild(mk('div','corner'));
+
+  // Column headers — flag emojis as examples of the criterion
+  G.cols.forEach(col=>{
+    const h=mk('div','col-hd');
+    const flagsHtml=col.examples.map(f=>'<span class="col-flag">'+f+'</span>').join('');
+    h.innerHTML='<div class="col-flags">'+flagsHtml+'</div><span class="ct">'+col.label+'</span>';
+    g.appendChild(h);
+  });
+
+  G.rows.forEach((row,ri)=>{
+    const rh=mk('div','row-hd');
+    rh.innerHTML='<span class="rc">'+row.category+'</span><span class="rv">'+row.value+'</span>';
+    g.appendChild(rh);
+    G.cols.forEach((col,ci)=>{
+      const cd=G.cells.find(c=>c.row===row.id&&c.col===col.id);
+      const cell=mk('div','cell');
+      cell.dataset.row=ri;cell.dataset.col=ci;
+      cell.appendChild(Object.assign(mk('div','rpip '+PIP[cd.rc])));
+      if(ST[ri][ci])fillCell(cell,ri,ci,cd);
+      else if(TR[ri][ci]>=MAX_T){
+        cell.classList.add('locked');
+        cell.innerHTML+='<span class="plus" style="font-size:16px;color:#bbb">✕</span>';
+      }else{
+        cell.innerHTML+='<span class="plus">+</span>';
+        cell.addEventListener('click',()=>openM(ri,ci));
+      }
+      g.appendChild(cell);
+    });
+  });
+}
+
+function fillCell(cell,ri,ci,cd){
+  const c=CM2[ST[ri][ci]];
+  const pts=BASE[TR[ri][ci]+1]*CM[cd.rc];
+  cell.classList.add('filled');
+  const d=mk('div','cans');
+  d.innerHTML='<span class="aflag">'+c.flag+'</span><span class="aname">'+c.name+'</span><span class="apts">+'+pts+' pts</span>';
+  cell.appendChild(d);
+}
+
+function updSc(){document.getElementById('sval').textContent=SC;}
+
+function updTries(){
+  if(!aCell)return;
+  const[ri,ci]=aCell;const t=TR[ri][ci];
+  for(let i=0;i<3;i++){
+    document.getElementById('td'+i).className='tdot'+(i<t?' used':'');
+    document.getElementById('mt'+i).className='mtd'+(i<t?' used':'');
+  }
+  const r=MAX_T-t;
+  document.getElementById('ttxt').textContent=r+' essai'+(r>1?'s':'')+' restant'+(r>1?'s':'');
+}
+
+function updProg(){
+  const d=document.getElementById('pdots');d.innerHTML='';
+  let done=0;
+  for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+    const dot=mk('div','pdot'+(ST[r][c]?' done':TR[r][c]>=MAX_T?' dead':''));
+    d.appendChild(dot);if(ST[r][c])done++;
+  }
+  return done;
+}
+
+function openM(ri,ci){
+  aCell=[ri,ci];
+  const row=G.rows[ri],col=G.cols[ci];
+  const cd=G.cells.find(c=>c.row===row.id&&c.col===col.id);
+  document.getElementById('crit').innerHTML='<strong>'+row.category+' :</strong> '+row.value+'<br><strong>Drapeau :</strong> '+col.label;
+  const rh=document.getElementById('rhint');
+  rh.innerHTML='<div class="lp" style="background:var('+PCLS[cd.rc-1]+');width:8px;height:8px;border-radius:50%"></div>'+CLBL[cd.rc]+' — 1er essai : <strong>'+BASE[1]*CM[cd.rc]+' pts</strong>';
+  clearSel();
+  document.getElementById('err').textContent='';
+  document.getElementById('overlay').classList.add('open');
+  updTries();
+  setTimeout(()=>document.getElementById('inp').focus(),80);
+}
+function closeModal(){
+  document.getElementById('overlay').classList.remove('open');
+  aCell=null;selC=null;hideSugs();
+}
+function bgClose(e){if(e.target===document.getElementById('overlay'))closeModal();}
+
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
+function hi(text,q){
+  const ti=norm(text),qi=norm(q);const i=ti.indexOf(qi);
+  if(i<0)return text;
+  return text.slice(0,i)+'<em>'+text.slice(i,i+q.length)+'</em>'+text.slice(i+q.length);
+}
+
+document.getElementById('inp').addEventListener('input',function(){
+  selC=null;document.getElementById('bok').disabled=true;
+  const q=this.value;if(!q){hideSugs();return;}
+  // Suggestions: name only, no flag emoji
+  const ms=COUNTRIES.filter(c=>norm(c.name).includes(norm(q))).slice(0,9);
+  if(!ms.length){hideSugs();return;}
+  const box=document.getElementById('sugs');
+  box.innerHTML=ms.map(c=>'<div class="sug" data-id="'+c.id+'">'+hi(c.name,q)+'</div>').join('');
+  box.querySelectorAll('.sug').forEach(el=>{
+    el.addEventListener('mousedown',e=>{e.preventDefault();setSel(CM2[el.dataset.id]);});
+  });
+  box.classList.add('open');
+});
+document.getElementById('inp').addEventListener('blur',()=>setTimeout(hideSugs,150));
+function hideSugs(){document.getElementById('sugs').classList.remove('open');}
+
+function setSel(c){
+  selC=c;
+  // Flag appears here — after choosing, before validating
+  document.getElementById('scflag').textContent=c.flag;
+  document.getElementById('scname').textContent=c.name;
+  document.getElementById('selc').classList.add('on');
+  document.getElementById('iwrap').style.display='none';
+  document.getElementById('bok').disabled=false;
+  document.getElementById('err').textContent='';
+  hideSugs();
+}
+function clearSel(){
+  selC=null;
+  document.getElementById('selc').classList.remove('on');
+  document.getElementById('iwrap').style.display='';
+  document.getElementById('inp').value='';
+  document.getElementById('bok').disabled=true;
+  setTimeout(()=>document.getElementById('inp').focus(),30);
+}
+
+function submit(){
+  if(!aCell||!selC)return;
+  const[ri,ci]=aCell;
+  const cd=G.cells.find(c=>c.row===G.rows[ri].id&&c.col===G.cols[ci].id);
+  if(cd.valid.includes(selC.id)){
+    const pts=BASE[TR[ri][ci]+1]*CM[cd.rc];
+    SC+=pts;ST[ri][ci]=selC.id;save();updSc();
+    const done=updProg();
+    const cellEl=document.querySelector('.cell[data-row="'+ri+'"][data-col="'+ci+'"]');
+    cellEl.innerHTML='';fillCell(cellEl,ri,ci,cd);
+    cellEl.classList.add('pop');setTimeout(()=>cellEl.classList.remove('pop'),400);
+    closeModal();
+    if(done===9)setTimeout(showEnd,600);
+  }else{
+    TR[ri][ci]++;save();updTries();
+    const cellEl=document.querySelector('.cell[data-row="'+ri+'"][data-col="'+ci+'"]');
+    cellEl.classList.add('wrong');setTimeout(()=>cellEl.classList.remove('wrong'),400);
+    if(TR[ri][ci]>=MAX_T){
+      document.getElementById('err').textContent='Plus d\'essais pour cette case.';
+      setTimeout(()=>{
+        cellEl.classList.add('locked');
+        cellEl.innerHTML='<span class="plus" style="font-size:16px;color:#bbb">✕</span>';
+        updProg();closeModal();
+      },1000);
+    }else{
+      document.getElementById('err').textContent=selC.name+' ne correspond pas. '+(MAX_T-TR[ri][ci])+' essai(s) restant(s).';
+      clearSel();
+    }
+  }
+}
+
+// ── Share system ──────────────────────────────────────────────────────────────
+let shareText='';
+
+function buildShareText(){
+  const found=ST.flat().filter(Boolean).length;
+  const maxPts=G.cells.reduce((a,cd)=>a+BASE[1]*CM[cd.rc],0)+BONUS;
+  let grid='';
+  for(let r=0;r<3;r++){
+    for(let c=0;c<3;c++){
+      const t=TR[r][c];
+      grid+=ST[r][c]?(t===0?'🟩':t===1?'🟨':'🟧'):TR[r][c]>=MAX_T?'🟥':'⬛';
+    }
+    grid+='\n';
+  }
+  const today=new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  return 'J\'ai joué à Flagoku ce '+today+' !\nScore : '+SC+'/'+maxPts+'\nhttps://flagoku.fr\n\n'+grid;
+}
+
+function shareCopy(){
+  navigator.clipboard.writeText(shareText).then(()=>{
+    const b=document.getElementById('sb-copy');
+    b.innerHTML='<span class="share-icon">✓</span>Copié !';
+    b.classList.add('cp');
+    setTimeout(()=>{b.innerHTML='<span class="share-icon">📋</span>Copier';b.classList.remove('cp');},2000);
+  });
+}
+
+function shareNative(){
+  if(navigator.share){
+    navigator.share({text:shareText}).catch(()=>{});
+  }
+}
+
+function shareWA(e){
+  e.preventDefault();
+  window.open('https://wa.me/?text='+encodeURIComponent(shareText),'_blank');
+}
+
+function shareMail(e){
+  e.preventDefault();
+  const subject=encodeURIComponent('Flagoku — mes résultats du jour !');
+  window.location.href='mailto:?subject='+subject+'&body='+encodeURIComponent(shareText);
+}
+
+function shareSMS(e){
+  e.preventDefault();
+  // Works on iOS & Android
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const sep=isIOS?'&':'?';
+  window.location.href='sms:'+sep+'body='+encodeURIComponent(shareText);
+}
+
+// ── End screen ────────────────────────────────────────────────────────────────
+function showEnd(){
+  const found=ST.flat().filter(Boolean).length;
+  const maxPts=G.cells.reduce((a,cd)=>a+BASE[1]*CM[cd.rc],0)+BONUS;
+  if(found===9){SC+=BONUS;save();updSc();}
+  const pct=Math.round(SC/maxPts*100);
+
+  document.getElementById('eicon').textContent=found===9?'🏆':found>=6?'👏':found>=3?'🤔':'💪';
+  document.getElementById('etitle').textContent=found===9?'Grille complète !':found+'/9 cases trouvées';
+  document.getElementById('escore').textContent=SC+' pts';
+  document.getElementById('esub').innerHTML=
+    pct+'% du score maximum ('+maxPts+' pts)'+
+    (found===9?'<br>+'+BONUS+' pts bonus grille complète !':'')+
+    '<br>Niveau : <strong>'+G.difficulty_label+'</strong> — Grille #'+G.id;
+
+  shareText=buildShareText();
+  document.getElementById('sharebox').textContent=shareText;
+
+  // Show native share button if supported
+  if(navigator.share){
+    document.getElementById('sb-native').style.display='flex';
+  }
+
+  document.getElementById('end').classList.add('open');
+  document.getElementById('end').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key==='Enter'&&!document.getElementById('bok').disabled)submit();
+});
+function mk(t,c){const e=document.createElement(t);if(c)e.className=c;return e;}
+init();
+</script>
+</body>
+</html>
